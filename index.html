@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nejmenší elektorát - Interaktivní mapa</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.8;
+        }
+        
+        .controls {
+            background-color: white;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .control-group label {
+            font-weight: bold;
+            color: #34495e;
+        }
+        
+        select {
+            padding: 8px 12px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            background-color: white;
+        }
+        
+        #map {
+            height: 70vh;
+            width: 100%;
+        }
+        
+        .legend {
+            background-color: white;
+            padding: 15px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .legend h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .popup-content {
+            font-family: Arial, sans-serif;
+        }
+        
+        .popup-content h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        
+        .popup-content .data-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            padding: 3px 0;
+        }
+        
+        .popup-content .data-label {
+            font-weight: bold;
+            color: #7f8c8d;
+        }
+        
+        .popup-content .data-value {
+            color: #2c3e50;
+        }
+        
+        .popup-content .link {
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .popup-content .link a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .popup-content .link a:hover {
+            text-decoration: underline;
+        }
+
+        .data-table-section {
+            background-color: white;
+            margin: 20px;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .data-table-section h2 {
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+            font-size: 1.8em;
+        }
+
+        .data-table-section p {
+            color: #7f8c8d;
+            margin: 0 0 20px 0;
+            font-style: italic;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        #municipalityTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        #municipalityTable th,
+        #municipalityTable td {
+            padding: 12px 8px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        #municipalityTable th {
+            background-color: #34495e;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+
+        #municipalityTable th:hover {
+            background-color: #2c3e50;
+        }
+
+        #municipalityTable th.sortable:after {
+            content: ' ↕';
+            opacity: 0.5;
+        }
+
+        #municipalityTable th.sorted-asc:after {
+            content: ' ↑';
+            opacity: 1;
+        }
+
+        #municipalityTable th.sorted-desc:after {
+            content: ' ↓';
+            opacity: 1;
+        }
+
+        #municipalityTable tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        #municipalityTable tbody tr:nth-child(even) {
+            background-color: #fdfdfd;
+        }
+
+        .table-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .table-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .data-table-section {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            #municipalityTable th,
+            #municipalityTable td {
+                padding: 8px 4px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Nejmenší elektorát České republiky</h1>
+        <p>Interaktivní mapa obcí s nejmenším počtem voličů v roce 2021</p>
+    </div>
+    
+    <div class="controls">
+        <div class="control-group">
+            <label for="colorBy">Zbarvit podle:</label>
+            <select id="colorBy">
+                <option value="voters2021">Počet voličů (2021)</option>
+                <option value="men">Počet mužů</option>
+                <option value="women15plus">Ženy 15+</option>
+                <option value="total15plus">Celkem 15+</option>
+            </select>
+        </div>
+        
+        <div class="control-group">
+            <label for="sizeBy">Velikost podle:</label>
+            <select id="sizeBy">
+                <option value="voters2021">Počet voličů (2021)</option>
+                <option value="men">Počet mužů</option>
+                <option value="women15plus">Ženy 15+</option>
+                <option value="total15plus">Celkem 15+</option>
+            </select>
+        </div>
+    </div>
+    
+    <div id="map"></div>
+    
+    <div class="legend">
+        <h3>Legenda</h3>
+        <div id="legendContent">
+            <!-- Legend will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <div class="data-table-section">
+        <h2>Kompletní přehled obcí</h2>
+        <p>Kliknutím na záhlaví sloupce můžete tabulku setřídit.</p>
+        <div class="table-container">
+            <table id="municipalityTable">
+                <thead>
+                    <tr>
+                        <th data-sort="name">Obec</th>
+                        <th data-sort="region">Kraj</th>
+                        <th data-sort="voters2021">Voliči 2021</th>
+                        <th data-sort="voterImpact">Podíl voliče (%)</th>
+                        <th data-sort="men">Muži</th>
+                        <th data-sort="women15plus">Ženy 15+</th>
+                        <th data-sort="total15plus">Celkem 15+</th>
+                        <th>Mapa</th>
+                    </tr>
+                </thead>
+                <tbody id="municipalityTableBody">
+                    <!-- Table content will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Our data -->
+    <script src="data.js"></script>
+    
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([49.5, 15.0], 8);
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        
+        // Store markers for easy access
+        let markers = [];
+        
+        // Color schemes
+        const colorSchemes = {
+            voters2021: ['#3498db', '#2980b9', '#1f4e79', '#154360'],
+            men: ['#e74c3c', '#c0392b', '#a93226', '#922b21'],
+            women15plus: ['#e67e22', '#d68910', '#b7950b', '#9a7d0a'],
+            total15plus: ['#27ae60', '#229954', '#1e8449', '#186a3b']
+        };
+        
+        // Get color based on value and property
+        function getColor(value, property, minVal, maxVal) {
+            const colors = colorSchemes[property];
+            const normalized = (value - minVal) / (maxVal - minVal);
+            
+            if (normalized <= 0.25) return colors[0];
+            if (normalized <= 0.5) return colors[1];
+            if (normalized <= 0.75) return colors[2];
+            return colors[3];
+        }
+        
+        // Get marker size based on value
+        function getMarkerSize(value, minVal, maxVal) {
+            const minSize = 8;
+            const maxSize = 20;
+            const normalized = (value - minVal) / (maxVal - minVal);
+            return minSize + (normalized * (maxSize - minSize));
+        }
+        
+        // Create popup content
+        function createPopupContent(municipality) {
+            return `
+                <div class="popup-content">
+                    <h3>${municipality.name}</h3>
+                    <div class="data-row">
+                        <span class="data-label">Kraj:</span>
+                        <span class="data-value">${municipality.region}</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Správní centrum:</span>
+                        <span class="data-value">${municipality.adminCenter}</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Kód obce:</span>
+                        <span class="data-value">${municipality.code}</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Voličů (2021):</span>
+                        <span class="data-value">${municipality.voters2021}</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Vliv hlasu:</span>
+                        <span class="data-value">${municipality.voterImpact}</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Mužů:</span>
+                        <span class="data-value">${municipality.men}</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Žen 15+:</span>
+                        <span class="data-value">${municipality.women15plus}</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Celkem 15+:</span>
+                        <span class="data-value">${municipality.total15plus}</span>
+                    </div>
+                    <div class="link">
+                        <a href="${municipality.mapyUrl}" target="_blank">Zobrazit na Mapy.cz</a>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Update legend
+        function updateLegend(property) {
+            const values = municipalities.map(m => m[property]);
+            const minVal = Math.min(...values);
+            const maxVal = Math.max(...values);
+            const colors = colorSchemes[property];
+            
+            const legendContent = document.getElementById('legendContent');
+            const propertyNames = {
+                voters2021: 'Počet voličů (2021)',
+                men: 'Počet mužů',
+                women15plus: 'Ženy 15+',
+                total15plus: 'Celkem 15+'
+            };
+            
+            legendContent.innerHTML = `
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: ${colors[0]}"></div>
+                    <span>${minVal} - ${Math.round(minVal + (maxVal - minVal) * 0.25)}</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: ${colors[1]}"></div>
+                    <span>${Math.round(minVal + (maxVal - minVal) * 0.25)} - ${Math.round(minVal + (maxVal - minVal) * 0.5)}</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: ${colors[2]}"></div>
+                    <span>${Math.round(minVal + (maxVal - minVal) * 0.5)} - ${Math.round(minVal + (maxVal - minVal) * 0.75)}</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: ${colors[3]}"></div>
+                    <span>${Math.round(minVal + (maxVal - minVal) * 0.75)} - ${maxVal}</span>
+                </div>
+            `;
+        }
+        
+        // Create markers
+        function createMarkers() {
+            const colorBy = document.getElementById('colorBy').value;
+            const sizeBy = document.getElementById('sizeBy').value;
+            
+            // Clear existing markers
+            markers.forEach(marker => map.removeLayer(marker));
+            markers = [];
+            
+            // Get min/max values for scaling
+            const colorValues = municipalities.map(m => m[colorBy]);
+            const sizeValues = municipalities.map(m => m[sizeBy]);
+            const colorMin = Math.min(...colorValues);
+            const colorMax = Math.max(...colorValues);
+            const sizeMin = Math.min(...sizeValues);
+            const sizeMax = Math.max(...sizeValues);
+            
+            // Create markers for each municipality
+            municipalities.forEach(municipality => {
+                const lat = municipality.coordinates[0];
+                const lng = municipality.coordinates[1];
+                
+                const color = getColor(municipality[colorBy], colorBy, colorMin, colorMax);
+                const size = getMarkerSize(municipality[sizeBy], sizeMin, sizeMax);
+                
+                const marker = L.circleMarker([lat, lng], {
+                    radius: size,
+                    fillColor: color,
+                    color: '#fff',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }).addTo(map);
+                
+                marker.bindPopup(createPopupContent(municipality));
+                markers.push(marker);
+            });
+            
+            // Update legend
+            updateLegend(colorBy);
+        }
+        
+        // Event listeners for controls
+        document.getElementById('colorBy').addEventListener('change', createMarkers);
+        document.getElementById('sizeBy').addEventListener('change', createMarkers);
+        
+        // Initial render
+        createMarkers();
+        
+        // Fit map to show all markers
+        const group = new L.featureGroup(markers);
+        map.fitBounds(group.getBounds().pad(0.1));
+
+        // Table functionality
+        function populateTable() {
+            const tableBody = document.getElementById('municipalityTableBody');
+            tableBody.innerHTML = '';
+
+            municipalities.forEach(municipality => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${municipality.name}</strong></td>
+                    <td>${municipality.region}</td>
+                    <td><strong>${municipality.voters2021}</strong></td>
+                    <td>${municipality.voterImpact}</td>
+                    <td>${municipality.men}</td>
+                    <td>${municipality.women15plus}</td>
+                    <td>${municipality.total15plus}</td>
+                    <td><a href="${municipality.mapyUrl}" target="_blank" class="table-link">Mapa</a></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Table sorting functionality
+        let currentSort = { column: null, direction: 'asc' };
+
+        function sortTable(column) {
+            const sortableColumns = ['name', 'region', 'voters2021', 'voterImpact', 'men', 'women15plus', 'total15plus'];
+            
+            if (!sortableColumns.includes(column)) return;
+
+            // Toggle direction if same column, otherwise reset to ascending
+            if (currentSort.column === column) {
+                currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSort.direction = 'asc';
+            }
+            currentSort.column = column;
+
+            // Sort the municipalities array
+            municipalities.sort((a, b) => {
+                let aVal = a[column];
+                let bVal = b[column];
+
+                // Handle different data types
+                if (column === 'voters2021' || column === 'men' || column === 'women15plus' || column === 'total15plus') {
+                    aVal = parseInt(aVal);
+                    bVal = parseInt(bVal);
+                } else if (column === 'voterImpact') {
+                    aVal = parseFloat(aVal.replace('%', ''));
+                    bVal = parseFloat(bVal.replace('%', ''));
+                } else {
+                    aVal = aVal.toString().toLowerCase();
+                    bVal = bVal.toString().toLowerCase();
+                }
+
+                if (aVal < bVal) return currentSort.direction === 'asc' ? -1 : 1;
+                if (aVal > bVal) return currentSort.direction === 'asc' ? 1 : -1;
+                return 0;
+            });
+
+            // Update table headers
+            document.querySelectorAll('#municipalityTable th').forEach(th => {
+                th.classList.remove('sorted-asc', 'sorted-desc');
+                if (th.dataset.sort) {
+                    th.classList.add('sortable');
+                }
+            });
+
+            const currentTh = document.querySelector(`th[data-sort="${column}"]`);
+            if (currentTh) {
+                currentTh.classList.add(currentSort.direction === 'asc' ? 'sorted-asc' : 'sorted-desc');
+            }
+
+            // Re-populate table with sorted data
+            populateTable();
+        }
+
+        // Add click listeners to table headers
+        document.querySelectorAll('#municipalityTable th[data-sort]').forEach(th => {
+            th.addEventListener('click', () => {
+                sortTable(th.dataset.sort);
+            });
+            th.classList.add('sortable');
+        });
+
+        // Initialize table
+        populateTable();
+    </script>
+</body>
+</html> 

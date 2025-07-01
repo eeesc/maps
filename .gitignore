@@ -1,0 +1,32 @@
+# Python files
+__pycache__/
+*.py
+*.pyc
+*.pyo
+*.pyd
+
+# Development/scraping files  
+election_scrape.py
+election_results_scraped.csv
+get_wikidata_coords.py
+improved_wikidata*.py
+merge_simple.py
+wikidata_coordinates.py
+coordinates_wikidata.js
+coordinates_output.js
+coordinates.js
+data_wikidata.js
+detailed_results.json
+
+# Downloaded files (but keep index.html)
+Výsledky*.html
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Only track essential map files:
+# - index.html (the main map)
+# - data.js (municipality data)  
+# - README.md (documentation)
+# - nejmenší_elektorát.xlsx (data source) 
