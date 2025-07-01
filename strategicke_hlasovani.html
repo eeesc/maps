@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulačka strategického hlasování - České volby</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.8;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .back-button:hover {
+            background-color: #2980b9;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .controls {
+            background-color: white;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .control-group label {
+            font-weight: bold;
+            color: #34495e;
+        }
+        
+        select {
+            padding: 8px 12px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            background-color: white;
+            min-width: 200px;
+        }
+        
+        .summary-stats {
+            background-color: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .summary-stats.active {
+            display: block;
+        }
+        
+        .summary-stats h2 {
+            color: #2c3e50;
+            margin: 0 0 15px 0;
+            font-size: 1.8em;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat-card {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid #3498db;
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        
+        #map {
+            height: 70vh;
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .legend {
+            background-color: white;
+            padding: 15px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .legend.active {
+            display: block;
+        }
+        
+        .legend h3 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+        }
+        
+        .legend h4 {
+            margin: 15px 0 10px 0;
+            color: #34495e;
+            font-size: 1.1em;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .data-table-section {
+            background-color: white;
+            margin: 20px;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .data-table-section.active {
+            display: block;
+        }
+        
+        .data-table-section h2 {
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+            font-size: 1.8em;
+        }
+        
+        .data-table-section p {
+            color: #7f8c8d;
+            margin: 0 0 20px 0;
+            font-style: italic;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        #resultsTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        #resultsTable th,
+        #resultsTable td {
+            padding: 12px 8px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        #resultsTable th {
+            background-color: #34495e;
+            color: white;
+            font-weight: bold;
+        }
+        
+        #resultsTable tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        #resultsTable tbody tr:nth-child(even) {
+            background-color: #fdfdfd;
+        }
+        
+        .impact-high {
+            background-color: #e74c3c !important;
+            color: white;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        
+        .impact-medium {
+            background-color: #f39c12 !important;
+            color: white;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        
+        .impact-low {
+            background-color: #27ae60 !important;
+            color: white;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        
+        .competitive-indicator {
+            background-color: #e74c3c;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .winnable-indicator {
+            background-color: #27ae60;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .popup-content {
+            font-family: Arial, sans-serif;
+            max-width: 300px;
+        }
+        
+        .popup-content h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        
+        .popup-content .data-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            padding: 3px 0;
+        }
+        
+        .popup-content .data-label {
+            font-weight: bold;
+            color: #7f8c8d;
+        }
+        
+        .popup-content .data-value {
+            color: #2c3e50;
+        }
+        
+        .popup-content .election-year {
+            background-color: #f8f9fa;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        
+        .popup-content .year-header {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .popup-content .party-result {
+            margin: 3px 0;
+            font-size: 0.9em;
+        }
+        
+        .popup-content .winner {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .popup-content .selected-party {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .no-selection {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+            background-color: white;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+        }
+
+        .legend-section {
+            margin: 40px 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .legend-toggle {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            width: 100%;
+            text-align: left;
+        }
+
+        .legend-toggle:hover {
+            background-color: #1a252f;
+        }
+
+        .legend {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 1px #ccc;
+        }
+        
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .control-group {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 5px;
+            }
+            
+            select {
+                min-width: auto;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .data-table-section {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            #resultsTable th,
+            #resultsTable td {
+                padding: 8px 4px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🗳️ Kalkulačka strategického hlasování</h1>
+        <p>Analýza vlivu vašeho hlasu v českých volbách na úrovni nejmenších obcí</p>
+        <a href="index.html" class="back-button">← Zpět na hlavní stránku</a>
+    </div>
+    
+    <div class="controls">
+        <div class="control-group">
+            <label for="electionYear">Volby:</label>
+            <select id="electionYear">
+                <option value="2021">2021 (parlamentní)</option>
+                <option value="2017">2017 (parlamentní)</option>
+            </select>
+        </div>
+        
+        <div class="control-group">
+            <label for="partySelect">Vyberte preferovanou stranu:</label>
+            <select id="partySelect">
+                <option value="">-- Načítání stran --</option>
+            </select>
+        </div>
+        
+        <div class="control-group">
+            <label for="viewMode">Zobrazení:</label>
+            <select id="viewMode">
+                <option value="both">Mapa + tabulka</option>
+                <option value="map">Pouze mapa</option>
+                <option value="table">Pouze tabulka</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="summary-stats" id="summary-stats">
+        <h2>Shrnutí strategického potenciálu</h2>
+        <div class="stats-grid" id="stats-grid">
+            <!-- Stats will be populated by JavaScript -->
+        </div>
+    </div>
+    
+
+    
+    <div class="data-table-section" id="data-table-section">
+        <h2>Strategické hlasovací příležitosti</h2>
+        <p id="table-description">Obce seřazené podle strategického potenciálu pro vaši vybranou stranu.</p>
+        <div class="table-container">
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th>Obec</th>
+                        <th>Kraj</th>
+                        <th>Voličů 2021</th>
+                        <th>Strategický dopad</th>
+                        <th>Náskok soupeře</th>
+                        <th>Hlasů k postupu</th>
+                        <th id="winnableHeader">Vítězné</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsTableBody">
+                    <!-- Table content will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="map"></div>
+    
+    <div class="no-selection" id="no-selection">
+        <h3>Vyberte stranu pro analýzu strategického hlasování</h3>
+        <p>Kalkulačka zobrazí obce, kde by váš hlas měl největší strategický dopad na základě historické konkurenceschopnosti a demografických údajů.</p>
+    </div>
+
+    <div class="legend-section" id="legend-section">
+        <button class="legend-toggle" id="legend-toggle">
+            📖 Zobrazit legendu a vysvětlivky
+        </button>
+        <div class="legend" id="legend" style="display: none;">
+            <h4>Barvy na mapě</h4>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #e74c3c;"></div>
+                <span>Vysoký strategický dopad (70-100 bodů)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #f39c12;"></div>
+                <span>Střední strategický dopad (40-69 bodů)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #27ae60;"></div>
+                <span>Nižší strategický dopad (0-39 bodů)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #95a5a6;"></div>
+                <span>Ostatní obce (bez strategického potenciálu)</span>
+            </div>
+            
+            <h4>Jak se počítá strategický dopad?</h4>
+            <div style="margin: 10px 0; font-size: 0.9em; color: #666;">
+                <p><strong>Velikost elektorátu:</strong> Základní skóre = 100/počet voličů</p>
+                <p style="margin-left: 15px; color: #999;">→ V obci se 17 voliči = 5,9 bodů (každý hlas = 5,9% dopadu)</p>
+                <p style="margin-left: 15px; color: #999;">→ V obci s 31 voliči = 3,2 bodů (každý hlas = 3,2% dopadu)</p>
+                
+                            <p><strong>Náskok soupeře:</strong> Bonus za malý odstup od lepšího umístění</p>
+            <p style="margin-left: 15px; color: #999;">→ +35 bodů: remíza za 1. místo (+1 hlas = vítězství!)</p>
+            <p style="margin-left: 15px; color: #999;">→ +25 bodů: náskok ≤2 hlasy (velmi těsný souboj)</p>
+            <p style="margin-left: 15px; color: #999;">→ +15 bodů: náskok ≤5 hlasů (těsný souboj)</p>
+            <p style="margin-left: 15px; color: #999;">→ +5 bodů: náskok ≤10 hlasů (středně těsný)</p>
+                
+                <p><strong>Reálná vítěznost:</strong> Bonus za dosažitelné cíle</p>
+                <p style="margin-left: 15px; color: #999;">→ +30 bodů: vaše strana by mohla vyhrát s ≤5 hlasy navíc</p>
+                
+                <p><strong>Celkové skóre:</strong> Součet všech faktorů (max. 100 bodů)</p>
+                <p style="margin-left: 15px; color: #999;">→ <strong>70-100:</strong> Extrémně vysoký dopad</p>
+                <p style="margin-left: 15px; color: #999;">→ <strong>40-69:</strong> Střední strategická příležitost</p>
+                <p style="margin-left: 15px; color: #999;">→ <strong>0-39:</strong> Nižší, ale stále relevantní dopad</p>
+            </div>
+            
+            <h4>Indikátory v tabulce</h4>
+            <div style="margin: 10px 0; font-size: 0.9em; color: #666;">
+                            <p><strong>Náskok soupeře:</strong> O kolik hlasů potřebujete pro strategický pokrok</p>
+            <p style="margin-left: 15px; color: #999;">→ "2 hlasy" = potřebujete +2 hlasy k nejbližší lepší straně</p>
+            <p style="margin-left: 15px; color: #999;">→ "1 hlas" = potřebujete +1 hlas k lepšímu umístění</p>
+            <p style="margin-left: 15px; color: #999;">→ "+1 hlas (vítězství)" = remíza za 1. místo, +1 hlas vyhrává</p>
+            <p style="margin-left: 15px; color: #999;">→ "0 hlasů (remíza)" = remíza, ale ne za 1. místo</p>
+            <p style="margin-left: 15px; color: #999;">→ "Vítěz" = vaše strana jasně vyhrála</p>
+            
+            <p><strong>Hlasů k postupu:</strong> Kolik hlasů potřebuje vaše strana</p>
+            <p style="margin-left: 15px; color: #999;">→ "+3 (postup) / +7 (vítězství)" = 3 hlasy pro lepší umístění, 7 pro vítězství</p>
+            <p style="margin-left: 15px; color: #999;">→ "🏆 Vítěz" = vaše strana v těchto volbách vyhrála</p>
+                
+                <p><span class="competitive-indicator">Těsný souboj</span> - Malý náskok soupeře (≤2 hlasy)</p>
+                <p><span class="winnable-indicator">Vítězné</span> - Vaše strana mohla vyhrát s malým počtem hlasů</p>
+                <p><strong>✅/❌ Sloupec:</strong> Zda byla vaše strana vítězná nebo mohla reálně vyhrát</p>
+            </div>
+            
+            <h4>Interpretace výsledků</h4>
+            <div style="margin: 10px 0; font-size: 0.9em; color: #666;">
+                <p><strong>Nejvyšší dopad:</strong> Malé obce s konkurenčními souboji</p>
+                <p><strong>Strategické příležitosti:</strong> Obce kde jen několik hlasů rozhodlo o vítězi</p>
+                <p><strong>Dlouhodobý trend:</strong> Porovnání výkonnosti mezi roky 2017 a 2021</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        let electionData = [];
+        let selectedParty = null;
+        let selectedYear = '2021';
+        let map = null;
+        let markers = [];
+        let currentAnalyses = [];
+
+        // Initialize the map
+        function initializeMap() {
+            map = L.map('map').setView([49.5, 15.0], 8);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+        }
+
+        // Load election data
+        async function loadElectionData() {
+            try {
+                const response = await fetch('party_results_detailed.json');
+                electionData = await response.json();
+                populatePartySelector();
+                // Initialize map with all municipalities
+                initializeMapWithAllMunicipalities();
+            } catch (error) {
+                console.error('Chyba při načítání dat:', error);
+                document.getElementById('partySelect').innerHTML = '<option value="">Chyba při načítání dat</option>';
+            }
+        }
+
+        // Get all unique parties for selected year
+        function getAllParties(year) {
+            const parties = new Map();
+            const yearKey = `results_${year}`;
+            
+            electionData.forEach(municipality => {
+                const yearData = municipality[yearKey];
+                if (yearData && !yearData.error && yearData.parties) {
+                    yearData.parties.forEach(party => {
+                        if (party.votes > 0) {
+                            const key = party.name;
+                            if (!parties.has(key)) {
+                                parties.set(key, {
+                                    name: party.name,
+                                    totalVotes: 0,
+                                    municipalities: new Set()
+                                });
+                            }
+                            const partyData = parties.get(key);
+                            partyData.totalVotes += party.votes;
+                            partyData.municipalities.add(municipality.municipality);
+                        }
+                    });
+                }
+            });
+
+            return Array.from(parties.values()).sort((a, b) => b.totalVotes - a.totalVotes);
+        }
+
+        // Populate party selector
+        function populatePartySelector() {
+            const parties = getAllParties(selectedYear);
+            const partySelect = document.getElementById('partySelect');
+            
+            partySelect.innerHTML = '<option value="">-- Vyberte stranu --</option>' +
+                parties.map(party => 
+                    `<option value="${party.name}">${party.name} (${party.totalVotes} hlasů)</option>`
+                ).join('');
+
+            // Reset selected party when year changes
+            selectedParty = null;
+            clearResults();
+        }
+
+        // Initialize event handlers
+        function initializeEventHandlers() {
+            // Party selection handler
+            document.getElementById('partySelect').addEventListener('change', function() {
+                selectedParty = this.value;
+                if (selectedParty) {
+                    analyzeStrategicVoting();
+                } else {
+                    clearResults();
+                }
+            });
+
+            // Election year handler
+            document.getElementById('electionYear').addEventListener('change', function() {
+                selectedYear = this.value;
+                populatePartySelector();
+            });
+
+            // View mode handler
+            document.getElementById('viewMode').addEventListener('change', updateViewMode);
+
+            // Legend toggle handler
+            document.getElementById('legend-toggle').addEventListener('click', function() {
+                const legend = document.getElementById('legend');
+                const button = document.getElementById('legend-toggle');
+                
+                if (legend.style.display === 'none') {
+                    legend.style.display = 'block';
+                    button.textContent = '📖 Skrýt legendu a vysvětlivky';
+                } else {
+                    legend.style.display = 'none';
+                    button.textContent = '📖 Zobrazit legendu a vysvětlivky';
+                }
+            });
+        }
+
+        // Helper function to find party with flexible name matching
+        function findPartyByName(parties, searchName) {
+            // First try exact match
+            let party = parties.find(p => p.name === searchName);
+            if (party) return party;
+            
+            // Then try partial match (case insensitive)
+            const searchLower = searchName.toLowerCase();
+            party = parties.find(p => 
+                p.name.toLowerCase().includes(searchLower) || 
+                searchLower.includes(p.name.toLowerCase())
+            );
+            if (party) return party;
+            
+            // Special cases for common party name variations
+            const nameMapping = {
+                'spolu': 'SPOLU – ODS, KDU-ČSL, TOP 09',
+                'ano': 'ANO 2011',
+                'ano 2011': 'ANO 2011',
+                'piráti': 'PIRÁTI a STAROSTOVÉ',
+                'pirátia starostové': 'PIRÁTI a STAROSTOVÉ',
+                'kdu': 'Křesť.demokr.unie-Čs.str.lid.',
+                'ods': 'Občanská demokratická strana',
+                'čssd': 'Česká str.sociálně demokrat.',
+                'ksčm': 'Komunistická str.Čech a Moravy',
+                'spd': 'Svoboda a př. demokracie (SPD)'
+            };
+            
+            const mappedName = nameMapping[searchName.toLowerCase()];
+            if (mappedName) {
+                return parties.find(p => p.name === mappedName);
+            }
+            
+            return null;
+        }
+
+        // Calculate strategic impact
+        function calculateStrategicImpact(municipality, partyName) {
+            const analysis = {
+                municipality: municipality.municipality,
+                region: municipality.region,
+                voters2021: municipality.voters_2021,
+                impactScore: 0,
+                scenarios: [],
+                competitiveness: 0,
+                winnable2017: false,
+                winnable2021: false,
+                coordinates: null
+            };
+
+            // Try to get coordinates from existing data.js if available
+            if (typeof municipalities !== 'undefined') {
+                const coordMatch = municipalities.find(m => m.name === municipality.municipality);
+                if (coordMatch && coordMatch.coordinates) {
+                    analysis.coordinates = coordMatch.coordinates;
+                }
+            }
+
+            // Analyze selected election year
+            const yearKey = `results_${selectedYear}`;
+            const yearData = municipality[yearKey];
+            
+            if (yearData && !yearData.error && yearData.parties) {
+                const sortedParties = [...yearData.parties].sort((a, b) => b.votes - a.votes);
+                const winner = sortedParties[0];
+                const runnerUp = sortedParties[1];
+                const selectedPartyData = findPartyByName(yearData.parties, partyName);
+
+                if (selectedPartyData) {
+                    const selectedPartyRank = sortedParties.findIndex(p => p.name === selectedPartyData.name) + 1;
+                    const partyAbove = selectedPartyRank > 1 ? sortedParties[selectedPartyRank - 2] : null;
+                    
+                    // Calculate strategic competitiveness: handle ties properly
+                    let strategicMargin = 0;
+                    let isTiedForFirst = false;
+                    
+                    if (selectedPartyRank === 1) {
+                        // Check if tied for first place
+                        const tiedForFirst = sortedParties.filter(p => p.votes === selectedPartyData.votes);
+                        if (tiedForFirst.length > 1) {
+                            // Tied for first - one more vote wins outright
+                            strategicMargin = 0;
+                            isTiedForFirst = true;
+                        } else {
+                            // Clear winner - show defensive margin to 2nd place
+                            strategicMargin = selectedPartyData.votes - (runnerUp ? runnerUp.votes : 0);
+                        }
+                    } else {
+                        // Find the next party above the tied group
+                        const selectedVotes = selectedPartyData.votes;
+                        let targetParty = null;
+                        
+                        // Look for the first party with more votes than selected party
+                        for (let i = 0; i < sortedParties.length; i++) {
+                            if (sortedParties[i].votes > selectedVotes) {
+                                targetParty = sortedParties[i];
+                                break;
+                            }
+                        }
+                        
+                        if (targetParty) {
+                            strategicMargin = targetParty.votes - selectedVotes;
+                        } else {
+                            // This shouldn't happen, but fallback to direct above party
+                            strategicMargin = partyAbove ? partyAbove.votes - selectedPartyData.votes : 0;
+                        }
+                    }
+                    
+                    const scenario = {
+                        year: selectedYear,
+                        totalVotes: yearData.total_valid_votes,
+                        selectedPartyVotes: selectedPartyData.votes,
+                        selectedPartyRank: selectedPartyRank,
+                        winner: winner.name,
+                        winnerVotes: winner.votes,
+                        overallMargin: winner.votes - (runnerUp ? runnerUp.votes : 0), // Overall race competitiveness
+                        strategicMargin: strategicMargin, // Strategic margin for selected party
+                        isTiedForFirst: isTiedForFirst, // Whether tied for first place
+                        couldWin: false,
+                        votesNeeded: 0,
+                        votesToAdvance: 0,
+                        allParties: sortedParties.map(p => ({
+                            name: p.name,
+                            votes: p.votes,
+                            percentage: p.percentage
+                        }))
+                    };
+
+                    // Calculate votes needed to win
+                    if (selectedPartyData.name !== winner.name) {
+                        scenario.votesNeeded = winner.votes - selectedPartyData.votes + 1;
+                        scenario.couldWin = scenario.votesNeeded <= 5;
+                    } else {
+                        scenario.couldWin = true; // Already won
+                        scenario.votesNeeded = 0;
+                    }
+
+                    // Calculate votes needed to advance one rank
+                    if (partyAbove && partyAbove.name !== selectedPartyData.name) {
+                        scenario.votesToAdvance = partyAbove.votes - selectedPartyData.votes + 1;
+                    } else {
+                        scenario.votesToAdvance = 0; // Already at top or first place
+                    }
+
+                    analysis.winnable2017 = selectedYear === '2017' ? scenario.couldWin : false;
+                    analysis.winnable2021 = selectedYear === '2021' ? scenario.couldWin : false;
+
+                    analysis.scenarios.push(scenario);
+                }
+            }
+
+            // Calculate overall impact score
+            if (analysis.scenarios.length > 0) {
+                const relevantScenario = analysis.scenarios.find(s => s.year === selectedYear) || analysis.scenarios[0];
+                
+                // Base impact: smaller electorate = higher impact per vote
+                const electorateImpact = 100 / (municipality.voters_2021 || 50);
+                
+                // Competitiveness: smaller gap to party above = higher strategic value
+                let competitivenessImpact = 0;
+                if (relevantScenario.isTiedForFirst) {
+                    // Extra bonus for being tied for first - one vote wins everything!
+                    competitivenessImpact = 35;
+                } else if (relevantScenario.strategicMargin <= 2) {
+                    competitivenessImpact = 25;
+                } else if (relevantScenario.strategicMargin <= 5) {
+                    competitivenessImpact = 15;
+                } else if (relevantScenario.strategicMargin <= 10) {
+                    competitivenessImpact = 5;
+                }
+                
+                // Strategic opportunity: focus on realistic advancement chances
+                let strategicOpportunityImpact = 0;
+                if (relevantScenario.selectedPartyRank > 1) { // Only if party didn't already win
+                    // Bonus for realistic chance to advance one rank
+                    if (relevantScenario.votesToAdvance <= 3) {
+                        strategicOpportunityImpact += 25;
+                    } else if (relevantScenario.votesToAdvance <= 5) {
+                        strategicOpportunityImpact += 15;
+                    } else if (relevantScenario.votesToAdvance <= 10) {
+                        strategicOpportunityImpact += 5;
+                    }
+                    
+                    // Additional bonus for realistic chance to win
+                    if (relevantScenario.votesNeeded <= 3) {
+                        strategicOpportunityImpact += 20;
+                    } else if (relevantScenario.votesNeeded <= 5) {
+                        strategicOpportunityImpact += 10;
+                    } else if (relevantScenario.votesNeeded <= 10) {
+                        strategicOpportunityImpact += 5;
+                    }
+                }
+                
+                // Higher rank = higher strategic value (2nd place better than 5th place)
+                const rankBonus = relevantScenario.selectedPartyRank <= 3 ? 10 : 0;
+                
+                analysis.impactScore = Math.min(100, electorateImpact + competitivenessImpact + strategicOpportunityImpact + rankBonus);
+                analysis.competitiveness = relevantScenario.strategicMargin;
+            }
+
+            return analysis;
+        }
+
+        // Analyze strategic voting
+        function analyzeStrategicVoting() {
+            if (!selectedParty) return;
+
+            // Hide no-selection message
+            document.getElementById('no-selection').style.display = 'none';
+
+            currentAnalyses = electionData.map(municipality => 
+                calculateStrategicImpact(municipality, selectedParty)
+            ).filter(analysis => {
+                // Only include municipalities with valid data
+                if (analysis.scenarios.length === 0) return false;
+                
+                // CRITICAL: Exclude municipalities where selected party already won
+                // Strategic voting only makes sense where you LOST but could potentially win/advance
+                const scenario = analysis.scenarios.find(s => s.year === selectedYear);
+                if (!scenario) return false;
+                
+                // If selected party already won, no strategic value - exclude it
+                if (scenario.selectedPartyRank === 1) return false;
+                
+                // Only include municipalities where strategic voting could help:
+                // 1. Party didn't win (rank > 1)
+                // 2. Either could advance in ranking OR could potentially win with reasonable votes
+                return scenario.selectedPartyRank > 1 && (scenario.votesToAdvance <= 10 || scenario.votesNeeded <= 10);
+            });
+
+            currentAnalyses.sort((a, b) => b.impactScore - a.impactScore);
+
+            displaySummaryStats(currentAnalyses);
+            displayMap(currentAnalyses);
+            displayTable(currentAnalyses);
+            updateViewMode();
+        }
+
+        // Display summary statistics
+        function displaySummaryStats(analyses) {
+            const summaryStats = document.getElementById('summary-stats');
+            const statsGrid = document.getElementById('stats-grid');
+            
+            const quickAdvancement = analyses.filter(a => {
+                const scenario = a.scenarios.find(s => s.year === selectedYear);
+                return scenario && scenario.votesToAdvance <= 3;
+            }).length;
+            
+            const winnableRaces = analyses.filter(a => {
+                const scenario = a.scenarios.find(s => s.year === selectedYear);
+                return scenario && scenario.votesNeeded <= 5;
+            }).length;
+            
+            const competitiveRaces = analyses.filter(a => a.competitiveness <= 2).length;
+            const totalMunicipalities = analyses.length;
+            const avgImpactScore = analyses.length > 0 ? analyses.reduce((sum, a) => sum + a.impactScore, 0) / analyses.length : 0;
+
+            statsGrid.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-value">${quickAdvancement}</div>
+                    <div class="stat-label">Rychlý postup (≤3 hlasy)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${winnableRaces}</div>
+                    <div class="stat-label">Vítězné šance (≤5 hlasů)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${competitiveRaces}</div>
+                    <div class="stat-label">Těsné souboje (≤2 hlasy)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${totalMunicipalities}</div>
+                    <div class="stat-label">Strategické příležitosti</div>
+                </div>
+            `;
+            
+            summaryStats.classList.add('active');
+        }
+
+        // Display map
+        function displayMap(strategicAnalyses) {
+            // Clear existing markers
+            markers.forEach(marker => map.removeLayer(marker));
+            markers = [];
+
+            // Create analysis for ALL municipalities to show on map
+            const allAnalyses = electionData.map(municipality => {
+                const analysis = calculateStrategicImpact(municipality, selectedParty || 'ANO 2011');
+                return analysis;
+            }).filter(analysis => analysis.coordinates && analysis.scenarios.length > 0);
+
+            // Add markers for ALL municipalities
+            allAnalyses.forEach(analysis => {
+                // Determine if this municipality is in the strategic list
+                const isStrategic = strategicAnalyses.some(sa => sa.municipality === analysis.municipality);
+                
+                // Color coding: red for strategic opportunities, blue for others
+                let color, radius;
+                if (isStrategic && selectedParty) {
+                    const impactClass = analysis.impactScore >= 70 ? 'high' : 
+                                      analysis.impactScore >= 40 ? 'medium' : 'low';
+                    color = impactClass === 'high' ? '#e74c3c' : 
+                           impactClass === 'medium' ? '#f39c12' : '#27ae60';
+                    radius = Math.max(8, analysis.impactScore / 10);
+                } else {
+                    // Non-strategic municipalities in neutral color
+                    color = '#95a5a6';
+                    radius = 6;
+                }
+
+                const marker = L.circleMarker(analysis.coordinates, {
+                    radius: radius,
+                    fillColor: color,
+                    color: '#fff',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: isStrategic ? 0.8 : 0.5
+                }).addTo(map);
+
+                // Create popup content for ALL municipalities
+                const popupContent = createPopupContent(analysis, isStrategic);
+                marker.bindPopup(popupContent);
+
+                markers.push(marker);
+            });
+        }
+
+        // Create popup content
+        function createPopupContent(analysis, isStrategic = false) {
+            const scenario = analysis.scenarios.find(s => s.year === selectedYear) || analysis.scenarios[0];
+            
+            return `
+                <div class="popup-content">
+                    <h3>${analysis.municipality}</h3>
+                    <div class="data-row">
+                        <span class="data-label">Kraj:</span>
+                        <span class="data-value">${analysis.region}</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Voličů 2021:</span>
+                        <span class="data-value">${analysis.voters2021}</span>
+                    </div>
+                    <div class="data-row">
+                        <span class="data-label">Vliv hlasu:</span>
+                        <span class="data-value">${(100/analysis.voters2021).toFixed(1)}%</span>
+                    </div>
+                    ${isStrategic && selectedParty ? `
+                        <div class="data-row">
+                            <span class="data-label">Strategický dopad:</span>
+                            <span class="data-value">${analysis.impactScore.toFixed(0)} bodů</span>
+                        </div>
+                    ` : ''}
+                    
+                    ${scenario ? `
+                        <div class="election-year">
+                            <div class="year-header">Výsledky voleb ${selectedYear}</div>
+                            <div style="font-size: 0.9em; margin: 10px 0;">
+                                <strong>Celkem platných hlasů:</strong> ${scenario.totalVotes}
+                            </div>
+                            
+                            ${scenario.allParties.slice(0, 8).map((party, index) => `
+                                <div class="party-result ${party.name === selectedParty ? 'selected-party' : ''} ${index === 0 ? 'winner' : ''}">
+                                    <span style="display: flex; justify-content: space-between;">
+                                        <span>${index + 1}. ${party.name === selectedParty ? '👤 ' : ''}${index === 0 ? '🏆 ' : ''}${party.name}</span>
+                                        <span>${party.votes} (${party.percentage.toFixed(1)}%)</span>
+                                    </span>
+                                </div>
+                            `).join('')}
+                            
+                            ${scenario.allParties.length > 8 ? `
+                                <div style="font-size: 0.8em; color: #666; margin-top: 5px;">
+                                    ... a ${scenario.allParties.length - 8} dalších stran
+                                </div>
+                            ` : ''}
+                            
+                            ${selectedParty && scenario.selectedPartyRank > 1 ? `
+                                <div style="background: #f8f9fa; padding: 8px; margin-top: 10px; border-radius: 4px; font-size: 0.9em;">
+                                    <strong>Pro ${selectedParty}:</strong><br>
+                                    ${scenario.votesToAdvance > 0 ? `• ${scenario.votesToAdvance} hlasů pro postup na ${scenario.selectedPartyRank - 1}. místo<br>` : ''}
+                                    ${scenario.votesNeeded > 0 ? `• ${scenario.votesNeeded} hlasů pro vítězství` : ''}
+                                    ${isStrategic ? '<br><strong>🎯 Strategická příležitost!</strong>' : ''}
+                                </div>
+                            ` : selectedParty && scenario.selectedPartyRank === 1 ? `
+                                <div style="background: #d4edda; padding: 8px; margin-top: 10px; border-radius: 4px; font-size: 0.9em; color: #155724;">
+                                    <strong>🏆 ${selectedParty} vyhrál tyto volby!</strong>
+                                </div>
+                            ` : ''}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        // Display table
+        function displayTable(analyses) {
+            const tableBody = document.getElementById('resultsTableBody');
+            
+            // Update table header and description
+            document.getElementById('winnableHeader').textContent = `Vítězné šance`;
+            document.getElementById('table-description').textContent = 
+                `Obce kde ${selectedParty} nezvítězila ve volbách ${selectedYear}, ale kde vaš hlas může pomoci postupu nebo vítězství. Seřazeno podle strategického dopadu.`;
+            
+            tableBody.innerHTML = analyses.map(analysis => {
+                const impactClass = analysis.impactScore >= 70 ? 'impact-high' : 
+                                  analysis.impactScore >= 40 ? 'impact-medium' : 'impact-low';
+                
+                const isWinnable = selectedYear === '2021' ? analysis.winnable2021 : analysis.winnable2017;
+                
+                let statusIndicators = [];
+                if (analysis.competitiveness <= 2) {
+                    statusIndicators.push('<span class="competitive-indicator">Těsný souboj</span>');
+                }
+                if (isWinnable) {
+                    statusIndicators.push('<span class="winnable-indicator">Vítězné</span>');
+                }
+                
+                const scenario = analysis.scenarios[0];
+                let votesText = 'N/A';
+                if (scenario) {
+                    if (scenario.selectedPartyRank === 1) {
+                        votesText = '🏆 Vítěz';
+                    } else {
+                        const advanceText = scenario.votesToAdvance > 0 ? `+${scenario.votesToAdvance}` : '0';
+                        const winText = scenario.votesNeeded > 0 ? `+${scenario.votesNeeded}` : '0';
+                        votesText = `${advanceText} (postup) / ${winText} (vítězství)`;
+                    }
+                }
+                
+                return `
+                    <tr>
+                        <td>${analysis.municipality}</td>
+                        <td>${analysis.region}</td>
+                        <td>${analysis.voters2021}</td>
+                        <td><span class="${impactClass}">${analysis.impactScore.toFixed(0)}</span></td>
+                        <td>${
+                            (() => {
+                                const scenario = analysis.scenarios.find(s => s.year === selectedYear);
+                                if (scenario && scenario.selectedPartyRank === 1) {
+                                    if (scenario.isTiedForFirst) {
+                                        return '+1 hlas (vítězství)';
+                                    } else {
+                                        return 'Vítěz';
+                                    }
+                                } else if (analysis.competitiveness === 0) {
+                                    return '0 hlasů (remíza)';
+                                } else {
+                                    const suffix = analysis.competitiveness === 1 ? 'hlas' : 'hlasů';
+                                    return analysis.competitiveness + ' ' + suffix;
+                                }
+                            })()
+                        }</td>
+                        <td>${votesText}</td>
+                        <td>${isWinnable ? '✅' : '❌'}</td>
+                        <td>${statusIndicators.join(' ')}</td>
+                    </tr>
+                `;
+            }).join('');
+            
+            document.getElementById('data-table-section').classList.add('active');
+        }
+
+        // Update view mode
+        function updateViewMode() {
+            const viewMode = document.getElementById('viewMode').value;
+            const mapDiv = document.getElementById('map');
+            const tableDiv = document.getElementById('data-table-section');
+            
+            switch(viewMode) {
+                case 'map':
+                    mapDiv.style.display = 'block';
+                    tableDiv.style.display = 'none';
+                    break;
+                case 'table':
+                    mapDiv.style.display = 'none';
+                    tableDiv.style.display = 'block';
+                    break;
+                case 'both':
+                default:
+                    mapDiv.style.display = 'block';
+                    tableDiv.style.display = 'block';
+                    break;
+            }
+            
+            // Refresh map if it's visible
+            if (viewMode !== 'table' && map) {
+                setTimeout(() => map.invalidateSize(), 100);
+            }
+        }
+
+        // Clear results
+        function clearResults() {
+            document.getElementById('summary-stats').classList.remove('active');
+            document.getElementById('data-table-section').classList.remove('active');
+            
+            // Show all municipalities on map with neutral colors
+            displayMap([]);
+            
+            document.getElementById('no-selection').style.display = 'block';
+        }
+
+        // Initialize map with all municipalities
+        function initializeMapWithAllMunicipalities() {
+            if (electionData.length > 0) {
+                displayMap([]);
+            }
+        }
+
+        // Initialize application
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeMap();
+            loadElectionData();
+            initializeEventHandlers();
+        });
+    </script>
+    
+    <!-- Load existing municipalities data for coordinates if available -->
+    <script src="data.js"></script>
+</body>
+</html> 
