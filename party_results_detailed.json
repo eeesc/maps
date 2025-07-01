@@ -1,0 +1,2578 @@
+[
+  {
+    "municipality": "Vysoká Lhota",
+    "region": "Kraj Vysočina",
+    "code": 561771,
+    "admin_center": "Pacov",
+    "voters_2021": 17,
+    "results_2017": {
+      "municipality": "Vysoká Lhota",
+      "year": "2017",
+      "url": "https://www.volby.cz/pls/ps2017/ps311?xjazyk=CZ&xkraj=10&xobec=561771&xvyber=6103",
+      "total_valid_votes": 19,
+      "parties": [
+        {
+          "number": 24,
+          "name": "Křesť.demokr.unie-Čs.str.lid.",
+          "votes": 6,
+          "percentage": 31.57
+        },
+        {
+          "number": 1,
+          "name": "Občanská demokratická strana",
+          "votes": 4,
+          "percentage": 21.05
+        },
+        {
+          "number": 8,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 2,
+          "percentage": 10.52
+        },
+        {
+          "number": 21,
+          "name": "ANO 2011",
+          "votes": 2,
+          "percentage": 10.52
+        },
+        {
+          "number": 4,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 1,
+          "percentage": 5.26
+        },
+        {
+          "number": 7,
+          "name": "STAROSTOVÉ A NEZÁVISLÍ",
+          "votes": 1,
+          "percentage": 5.26
+        },
+        {
+          "number": 12,
+          "name": "Strana svobodných občanů",
+          "votes": 1,
+          "percentage": 5.26
+        },
+        {
+          "number": 15,
+          "name": "Česká pirátská strana",
+          "votes": 1,
+          "percentage": 5.26
+        },
+        {
+          "number": 20,
+          "name": "TOP 09",
+          "votes": 1,
+          "percentage": 5.26
+        },
+        {
+          "number": 2,
+          "name": "Řád národa - Vlastenecká unie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "CESTA ODPOVĚDNÉ SPOLEČNOSTI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 6,
+          "name": "Radostné Česko",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 9,
+          "name": "Strana zelených",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "ROZUMNÍ-stop migraci,diktát.EU",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 13,
+          "name": "Blok proti islam.-Obran.domova",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 14,
+          "name": "Občanská demokratická aliance",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 19,
+          "name": "Referendum o Evropské unii",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 23,
+          "name": "SPR-Republ.str.Čsl. M.Sládka",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 25,
+          "name": "Česká strana národně sociální",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 26,
+          "name": "REALISTÉ",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 27,
+          "name": "SPORTOVCI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 28,
+          "name": "Dělnic.str.sociální spravedl.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 29,
+          "name": "Svob.a př.dem.-T.Okamura (SPD)",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 30,
+          "name": "Strana Práv Občanů",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    },
+    "results_2021": {
+      "municipality": "Vysoká Lhota",
+      "year": "2021",
+      "url": "https://www.volby.cz/pls/ps2021/ps311?xjazyk=CZ&xkraj=10&xobec=561771&xvyber=6103",
+      "total_valid_votes": 17,
+      "parties": [
+        {
+          "number": 13,
+          "name": "SPOLU – ODS, KDU-ČSL, TOP 09",
+          "votes": 7,
+          "percentage": 41.17
+        },
+        {
+          "number": 20,
+          "name": "ANO 2011",
+          "votes": 5,
+          "percentage": 29.41
+        },
+        {
+          "number": 5,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 3,
+          "percentage": 17.64
+        },
+        {
+          "number": 4,
+          "name": "Svoboda a př. demokracie (SPD)",
+          "votes": 1,
+          "percentage": 5.88
+        },
+        {
+          "number": 17,
+          "name": "PIRÁTI a STAROSTOVÉ",
+          "votes": 1,
+          "percentage": 5.88
+        },
+        {
+          "number": 1,
+          "name": "Strana zelených",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 2,
+          "name": "Švýcarská demokracie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "VOLNÝ blok",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 7,
+          "name": "ALIANCE NÁRODNÍCH SIL",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 8,
+          "name": "Trikolora Svobodní Soukromníci",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 9,
+          "name": "Aliance pro budoucnost",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "Hnutí Prameny",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 12,
+          "name": "PŘÍSAHA Roberta Šlachty",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 15,
+          "name": "Urza.cz: Nechceme vaše hlasy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 16,
+          "name": "Koruna Česká (monarch.strana)",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 18,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 19,
+          "name": "Moravské zemské hnutí",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 21,
+          "name": "Otevřeme ČR normálnímu životu",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 22,
+          "name": "Moravané",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    }
+  },
+  {
+    "municipality": "Vanůvek",
+    "region": "Kraj Vysočina",
+    "code": 588091,
+    "admin_center": "Telč",
+    "voters_2021": 18,
+    "results_2017": {
+      "municipality": "Vanůvek",
+      "year": "2017",
+      "url": "https://www.volby.cz/pls/ps2017/ps311?xjazyk=CZ&xkraj=10&xobec=588091&xvyber=6102",
+      "total_valid_votes": 25,
+      "parties": [
+        {
+          "number": 1,
+          "name": "Občanská demokratická strana",
+          "votes": 5,
+          "percentage": 20.0
+        },
+        {
+          "number": 8,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 3,
+          "percentage": 12.0
+        },
+        {
+          "number": 29,
+          "name": "Svob.a př.dem.-T.Okamura (SPD)",
+          "votes": 3,
+          "percentage": 12.0
+        },
+        {
+          "number": 4,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 2,
+          "percentage": 8.0
+        },
+        {
+          "number": 7,
+          "name": "STAROSTOVÉ A NEZÁVISLÍ",
+          "votes": 2,
+          "percentage": 8.0
+        },
+        {
+          "number": 9,
+          "name": "Strana zelených",
+          "votes": 2,
+          "percentage": 8.0
+        },
+        {
+          "number": 12,
+          "name": "Strana svobodných občanů",
+          "votes": 2,
+          "percentage": 8.0
+        },
+        {
+          "number": 15,
+          "name": "Česká pirátská strana",
+          "votes": 2,
+          "percentage": 8.0
+        },
+        {
+          "number": 21,
+          "name": "ANO 2011",
+          "votes": 2,
+          "percentage": 8.0
+        },
+        {
+          "number": 20,
+          "name": "TOP 09",
+          "votes": 1,
+          "percentage": 4.0
+        },
+        {
+          "number": 23,
+          "name": "SPR-Republ.str.Čsl. M.Sládka",
+          "votes": 1,
+          "percentage": 4.0
+        },
+        {
+          "number": 2,
+          "name": "Řád národa - Vlastenecká unie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "CESTA ODPOVĚDNÉ SPOLEČNOSTI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 6,
+          "name": "Radostné Česko",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "ROZUMNÍ-stop migraci,diktát.EU",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 13,
+          "name": "Blok proti islam.-Obran.domova",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 14,
+          "name": "Občanská demokratická aliance",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 19,
+          "name": "Referendum o Evropské unii",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 24,
+          "name": "Křesť.demokr.unie-Čs.str.lid.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 25,
+          "name": "Česká strana národně sociální",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 26,
+          "name": "REALISTÉ",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 27,
+          "name": "SPORTOVCI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 28,
+          "name": "Dělnic.str.sociální spravedl.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 30,
+          "name": "Strana Práv Občanů",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    },
+    "results_2021": {
+      "municipality": "Vanůvek",
+      "year": "2021",
+      "url": "https://www.volby.cz/pls/ps2021/ps311?xjazyk=CZ&xkraj=10&xobec=588091&xvyber=6102",
+      "total_valid_votes": 18,
+      "parties": [
+        {
+          "number": 20,
+          "name": "ANO 2011",
+          "votes": 5,
+          "percentage": 27.77
+        },
+        {
+          "number": 17,
+          "name": "PIRÁTI a STAROSTOVÉ",
+          "votes": 4,
+          "percentage": 22.22
+        },
+        {
+          "number": 18,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 3,
+          "percentage": 16.66
+        },
+        {
+          "number": 4,
+          "name": "Svoboda a př. demokracie (SPD)",
+          "votes": 2,
+          "percentage": 11.11
+        },
+        {
+          "number": 1,
+          "name": "Strana zelených",
+          "votes": 1,
+          "percentage": 5.55
+        },
+        {
+          "number": 8,
+          "name": "Trikolora Svobodní Soukromníci",
+          "votes": 1,
+          "percentage": 5.55
+        },
+        {
+          "number": 12,
+          "name": "PŘÍSAHA Roberta Šlachty",
+          "votes": 1,
+          "percentage": 5.55
+        },
+        {
+          "number": 13,
+          "name": "SPOLU – ODS, KDU-ČSL, TOP 09",
+          "votes": 1,
+          "percentage": 5.55
+        },
+        {
+          "number": 2,
+          "name": "Švýcarská demokracie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "VOLNÝ blok",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 5,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 7,
+          "name": "ALIANCE NÁRODNÍCH SIL",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 9,
+          "name": "Aliance pro budoucnost",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "Hnutí Prameny",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 15,
+          "name": "Urza.cz: Nechceme vaše hlasy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 16,
+          "name": "Koruna Česká (monarch.strana)",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 19,
+          "name": "Moravské zemské hnutí",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 21,
+          "name": "Otevřeme ČR normálnímu životu",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 22,
+          "name": "Moravané",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    }
+  },
+  {
+    "municipality": "Bludov",
+    "region": "Středočeský",
+    "code": 530964,
+    "admin_center": "Kutná Hora",
+    "voters_2021": 21,
+    "results_2017": {
+      "municipality": "Bludov",
+      "year": "2017",
+      "url": "https://www.volby.cz/pls/ps2017/ps311?xjazyk=CZ&xkraj=2&xobec=530964&xvyber=2105",
+      "total_valid_votes": 23,
+      "parties": [
+        {
+          "number": 1,
+          "name": "Občanská demokratická strana",
+          "votes": 5,
+          "percentage": 21.73
+        },
+        {
+          "number": 21,
+          "name": "ANO 2011",
+          "votes": 5,
+          "percentage": 21.73
+        },
+        {
+          "number": 15,
+          "name": "Česká pirátská strana",
+          "votes": 4,
+          "percentage": 17.39
+        },
+        {
+          "number": 4,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 3,
+          "percentage": 13.04
+        },
+        {
+          "number": 7,
+          "name": "STAROSTOVÉ A NEZÁVISLÍ",
+          "votes": 2,
+          "percentage": 8.69
+        },
+        {
+          "number": 29,
+          "name": "Svob.a př.dem.-T.Okamura (SPD)",
+          "votes": 2,
+          "percentage": 8.69
+        },
+        {
+          "number": 8,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 1,
+          "percentage": 4.34
+        },
+        {
+          "number": 24,
+          "name": "Křesť.demokr.unie-Čs.str.lid.",
+          "votes": 1,
+          "percentage": 4.34
+        },
+        {
+          "number": 2,
+          "name": "Řád národa - Vlastenecká unie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "CESTA ODPOVĚDNÉ SPOLEČNOSTI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 6,
+          "name": "Radostné Česko",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 9,
+          "name": "Strana zelených",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "ROZUMNÍ-stop migraci,diktát.EU",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 12,
+          "name": "Strana svobodných občanů",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 13,
+          "name": "Blok proti islam.-Obran.domova",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 14,
+          "name": "Občanská demokratická aliance",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 17,
+          "name": "Unie H.A.V.E.L.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 19,
+          "name": "Referendum o Evropské unii",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 20,
+          "name": "TOP 09",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 22,
+          "name": "Dobrá volba 2016",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 23,
+          "name": "SPR-Republ.str.Čsl. M.Sládka",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 25,
+          "name": "Česká strana národně sociální",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 26,
+          "name": "REALISTÉ",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 27,
+          "name": "SPORTOVCI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 28,
+          "name": "Dělnic.str.sociální spravedl.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 30,
+          "name": "Strana Práv Občanů",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    },
+    "results_2021": {
+      "municipality": "Bludov",
+      "year": "2021",
+      "url": "https://www.volby.cz/pls/ps2021/ps311?xjazyk=CZ&xkraj=2&xobec=530964&xvyber=2105",
+      "total_valid_votes": 21,
+      "parties": [
+        {
+          "number": 13,
+          "name": "SPOLU – ODS, KDU-ČSL, TOP 09",
+          "votes": 6,
+          "percentage": 28.57
+        },
+        {
+          "number": 5,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 5,
+          "percentage": 23.8
+        },
+        {
+          "number": 20,
+          "name": "ANO 2011",
+          "votes": 4,
+          "percentage": 19.04
+        },
+        {
+          "number": 4,
+          "name": "Svoboda a př. demokracie (SPD)",
+          "votes": 2,
+          "percentage": 9.52
+        },
+        {
+          "number": 17,
+          "name": "PIRÁTI a STAROSTOVÉ",
+          "votes": 2,
+          "percentage": 9.52
+        },
+        {
+          "number": 12,
+          "name": "PŘÍSAHA Roberta Šlachty",
+          "votes": 1,
+          "percentage": 4.76
+        },
+        {
+          "number": 21,
+          "name": "Otevřeme ČR normálnímu životu",
+          "votes": 1,
+          "percentage": 4.76
+        },
+        {
+          "number": 1,
+          "name": "Strana zelených",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 2,
+          "name": "Švýcarská demokracie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "VOLNÝ blok",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 7,
+          "name": "ALIANCE NÁRODNÍCH SIL",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 8,
+          "name": "Trikolora Svobodní Soukromníci",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 9,
+          "name": "Aliance pro budoucnost",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "Hnutí Prameny",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 14,
+          "name": "SENIOŘI 21",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 15,
+          "name": "Urza.cz: Nechceme vaše hlasy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 16,
+          "name": "Koruna Česká (monarch.strana)",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 18,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    }
+  },
+  {
+    "municipality": "Hvožďany",
+    "region": "Plzeňský",
+    "code": 566331,
+    "admin_center": "Domažlice",
+    "voters_2021": 22,
+    "results_2017": {
+      "municipality": "Hvožďany",
+      "year": "2017",
+      "url": "https://www.volby.cz/pls/ps2017/ps311?xjazyk=CZ&xkraj=4&xobec=566331&xvyber=3201",
+      "total_valid_votes": 12,
+      "parties": [
+        {
+          "number": 21,
+          "name": "ANO 2011",
+          "votes": 5,
+          "percentage": 41.66
+        },
+        {
+          "number": 4,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 2,
+          "percentage": 16.66
+        },
+        {
+          "number": 7,
+          "name": "STAROSTOVÉ A NEZÁVISLÍ",
+          "votes": 2,
+          "percentage": 16.66
+        },
+        {
+          "number": 1,
+          "name": "Občanská demokratická strana",
+          "votes": 1,
+          "percentage": 8.33
+        },
+        {
+          "number": 8,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 1,
+          "percentage": 8.33
+        },
+        {
+          "number": 24,
+          "name": "Křesť.demokr.unie-Čs.str.lid.",
+          "votes": 1,
+          "percentage": 8.33
+        },
+        {
+          "number": 2,
+          "name": "Řád národa - Vlastenecká unie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "CESTA ODPOVĚDNÉ SPOLEČNOSTI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 6,
+          "name": "Radostné Česko",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 9,
+          "name": "Strana zelených",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "ROZUMNÍ-stop migraci,diktát.EU",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 12,
+          "name": "Strana svobodných občanů",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 13,
+          "name": "Blok proti islam.-Obran.domova",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 14,
+          "name": "Občanská demokratická aliance",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 15,
+          "name": "Česká pirátská strana",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 16,
+          "name": "OBČANÉ 2011-SPRAVEDL. PRO LIDI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 19,
+          "name": "Referendum o Evropské unii",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 20,
+          "name": "TOP 09",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 23,
+          "name": "SPR-Republ.str.Čsl. M.Sládka",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 25,
+          "name": "Česká strana národně sociální",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 26,
+          "name": "REALISTÉ",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 27,
+          "name": "SPORTOVCI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 28,
+          "name": "Dělnic.str.sociální spravedl.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 29,
+          "name": "Svob.a př.dem.-T.Okamura (SPD)",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 30,
+          "name": "Strana Práv Občanů",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    },
+    "results_2021": {
+      "municipality": "Hvožďany",
+      "year": "2021",
+      "url": "https://www.volby.cz/pls/ps2021/ps311?xjazyk=CZ&xkraj=4&xobec=566331&xvyber=3201",
+      "total_valid_votes": 22,
+      "parties": [
+        {
+          "number": 5,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 8,
+          "percentage": 36.36
+        },
+        {
+          "number": 20,
+          "name": "ANO 2011",
+          "votes": 5,
+          "percentage": 22.72
+        },
+        {
+          "number": 9,
+          "name": "Aliance pro budoucnost",
+          "votes": 3,
+          "percentage": 13.63
+        },
+        {
+          "number": 4,
+          "name": "Svoboda a př. demokracie (SPD)",
+          "votes": 2,
+          "percentage": 9.09
+        },
+        {
+          "number": 13,
+          "name": "SPOLU – ODS, KDU-ČSL, TOP 09",
+          "votes": 2,
+          "percentage": 9.09
+        },
+        {
+          "number": 17,
+          "name": "PIRÁTI a STAROSTOVÉ",
+          "votes": 2,
+          "percentage": 9.09
+        },
+        {
+          "number": 1,
+          "name": "Strana zelených",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 2,
+          "name": "Švýcarská demokracie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "VOLNÝ blok",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 7,
+          "name": "ALIANCE NÁRODNÍCH SIL",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 8,
+          "name": "Trikolora Svobodní Soukromníci",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "Hnutí Prameny",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 12,
+          "name": "PŘÍSAHA Roberta Šlachty",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 14,
+          "name": "SENIOŘI 21",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 15,
+          "name": "Urza.cz: Nechceme vaše hlasy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 16,
+          "name": "Koruna Česká (monarch.strana)",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 18,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 21,
+          "name": "Otevřeme ČR normálnímu životu",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    }
+  },
+  {
+    "municipality": "Kaničky",
+    "region": "Plzeňský",
+    "code": 553778,
+    "admin_center": "Domažlice",
+    "voters_2021": 26,
+    "results_2017": {
+      "municipality": "Kaničky",
+      "year": "2017",
+      "url": "https://www.volby.cz/pls/ps2017/ps311?xjazyk=CZ&xkraj=4&xobec=553778&xvyber=3201",
+      "total_valid_votes": 23,
+      "parties": [
+        {
+          "number": 21,
+          "name": "ANO 2011",
+          "votes": 11,
+          "percentage": 47.82
+        },
+        {
+          "number": 24,
+          "name": "Křesť.demokr.unie-Čs.str.lid.",
+          "votes": 4,
+          "percentage": 17.39
+        },
+        {
+          "number": 7,
+          "name": "STAROSTOVÉ A NEZÁVISLÍ",
+          "votes": 3,
+          "percentage": 13.04
+        },
+        {
+          "number": 15,
+          "name": "Česká pirátská strana",
+          "votes": 3,
+          "percentage": 13.04
+        },
+        {
+          "number": 1,
+          "name": "Občanská demokratická strana",
+          "votes": 1,
+          "percentage": 4.34
+        },
+        {
+          "number": 8,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 1,
+          "percentage": 4.34
+        },
+        {
+          "number": 2,
+          "name": "Řád národa - Vlastenecká unie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "CESTA ODPOVĚDNÉ SPOLEČNOSTI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 4,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 6,
+          "name": "Radostné Česko",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 9,
+          "name": "Strana zelených",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "ROZUMNÍ-stop migraci,diktát.EU",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 12,
+          "name": "Strana svobodných občanů",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 13,
+          "name": "Blok proti islam.-Obran.domova",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 14,
+          "name": "Občanská demokratická aliance",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 16,
+          "name": "OBČANÉ 2011-SPRAVEDL. PRO LIDI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 19,
+          "name": "Referendum o Evropské unii",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 20,
+          "name": "TOP 09",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 23,
+          "name": "SPR-Republ.str.Čsl. M.Sládka",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 25,
+          "name": "Česká strana národně sociální",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 26,
+          "name": "REALISTÉ",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 27,
+          "name": "SPORTOVCI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 28,
+          "name": "Dělnic.str.sociální spravedl.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 29,
+          "name": "Svob.a př.dem.-T.Okamura (SPD)",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 30,
+          "name": "Strana Práv Občanů",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    },
+    "results_2021": {
+      "municipality": "Kaničky",
+      "year": "2021",
+      "url": "https://www.volby.cz/pls/ps2021/ps311?xjazyk=CZ&xkraj=4&xobec=553778&xvyber=3201",
+      "total_valid_votes": 26,
+      "parties": [
+        {
+          "number": 13,
+          "name": "SPOLU – ODS, KDU-ČSL, TOP 09",
+          "votes": 9,
+          "percentage": 34.61
+        },
+        {
+          "number": 20,
+          "name": "ANO 2011",
+          "votes": 8,
+          "percentage": 30.76
+        },
+        {
+          "number": 17,
+          "name": "PIRÁTI a STAROSTOVÉ",
+          "votes": 5,
+          "percentage": 19.23
+        },
+        {
+          "number": 4,
+          "name": "Svoboda a př. demokracie (SPD)",
+          "votes": 3,
+          "percentage": 11.53
+        },
+        {
+          "number": 8,
+          "name": "Trikolora Svobodní Soukromníci",
+          "votes": 1,
+          "percentage": 3.84
+        },
+        {
+          "number": 1,
+          "name": "Strana zelených",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 2,
+          "name": "Švýcarská demokracie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "VOLNÝ blok",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 5,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 7,
+          "name": "ALIANCE NÁRODNÍCH SIL",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 9,
+          "name": "Aliance pro budoucnost",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "Hnutí Prameny",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 12,
+          "name": "PŘÍSAHA Roberta Šlachty",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 14,
+          "name": "SENIOŘI 21",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 15,
+          "name": "Urza.cz: Nechceme vaše hlasy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 16,
+          "name": "Koruna Česká (monarch.strana)",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 18,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 21,
+          "name": "Otevřeme ČR normálnímu životu",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    }
+  },
+  {
+    "municipality": "Spělkov",
+    "region": "Kraj Vysočina",
+    "code": 596795,
+    "admin_center": "Nové Město na Moravě",
+    "voters_2021": 26,
+    "results_2017": {
+      "municipality": "Spělkov",
+      "year": "2017",
+      "url": "https://www.volby.cz/pls/ps2017/ps311?xjazyk=CZ&xkraj=10&xobec=596795&xvyber=6105",
+      "total_valid_votes": 33,
+      "parties": [
+        {
+          "number": 29,
+          "name": "Svob.a př.dem.-T.Okamura (SPD)",
+          "votes": 9,
+          "percentage": 27.27
+        },
+        {
+          "number": 21,
+          "name": "ANO 2011",
+          "votes": 7,
+          "percentage": 21.21
+        },
+        {
+          "number": 4,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 5,
+          "percentage": 15.15
+        },
+        {
+          "number": 8,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 5,
+          "percentage": 15.15
+        },
+        {
+          "number": 12,
+          "name": "Strana svobodných občanů",
+          "votes": 2,
+          "percentage": 6.06
+        },
+        {
+          "number": 1,
+          "name": "Občanská demokratická strana",
+          "votes": 1,
+          "percentage": 3.03
+        },
+        {
+          "number": 3,
+          "name": "CESTA ODPOVĚDNÉ SPOLEČNOSTI",
+          "votes": 1,
+          "percentage": 3.03
+        },
+        {
+          "number": 7,
+          "name": "STAROSTOVÉ A NEZÁVISLÍ",
+          "votes": 1,
+          "percentage": 3.03
+        },
+        {
+          "number": 10,
+          "name": "ROZUMNÍ-stop migraci,diktát.EU",
+          "votes": 1,
+          "percentage": 3.03
+        },
+        {
+          "number": 15,
+          "name": "Česká pirátská strana",
+          "votes": 1,
+          "percentage": 3.03
+        },
+        {
+          "number": 2,
+          "name": "Řád národa - Vlastenecká unie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 6,
+          "name": "Radostné Česko",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 9,
+          "name": "Strana zelených",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 13,
+          "name": "Blok proti islam.-Obran.domova",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 14,
+          "name": "Občanská demokratická aliance",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 19,
+          "name": "Referendum o Evropské unii",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 20,
+          "name": "TOP 09",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 23,
+          "name": "SPR-Republ.str.Čsl. M.Sládka",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 24,
+          "name": "Křesť.demokr.unie-Čs.str.lid.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 25,
+          "name": "Česká strana národně sociální",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 26,
+          "name": "REALISTÉ",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 27,
+          "name": "SPORTOVCI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 28,
+          "name": "Dělnic.str.sociální spravedl.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 30,
+          "name": "Strana Práv Občanů",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    },
+    "results_2021": {
+      "municipality": "Spělkov",
+      "year": "2021",
+      "url": "https://www.volby.cz/pls/ps2021/ps311?xjazyk=CZ&xkraj=10&xobec=596795&xvyber=6105",
+      "total_valid_votes": 26,
+      "parties": [
+        {
+          "number": 20,
+          "name": "ANO 2011",
+          "votes": 6,
+          "percentage": 23.07
+        },
+        {
+          "number": 5,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 5,
+          "percentage": 19.23
+        },
+        {
+          "number": 13,
+          "name": "SPOLU – ODS, KDU-ČSL, TOP 09",
+          "votes": 5,
+          "percentage": 19.23
+        },
+        {
+          "number": 8,
+          "name": "Trikolora Svobodní Soukromníci",
+          "votes": 3,
+          "percentage": 11.53
+        },
+        {
+          "number": 4,
+          "name": "Svoboda a př. demokracie (SPD)",
+          "votes": 2,
+          "percentage": 7.69
+        },
+        {
+          "number": 10,
+          "name": "Hnutí Prameny",
+          "votes": 2,
+          "percentage": 7.69
+        },
+        {
+          "number": 12,
+          "name": "PŘÍSAHA Roberta Šlachty",
+          "votes": 1,
+          "percentage": 3.84
+        },
+        {
+          "number": 17,
+          "name": "PIRÁTI a STAROSTOVÉ",
+          "votes": 1,
+          "percentage": 3.84
+        },
+        {
+          "number": 21,
+          "name": "Otevřeme ČR normálnímu životu",
+          "votes": 1,
+          "percentage": 3.84
+        },
+        {
+          "number": 1,
+          "name": "Strana zelených",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 2,
+          "name": "Švýcarská demokracie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "VOLNÝ blok",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 7,
+          "name": "ALIANCE NÁRODNÍCH SIL",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 9,
+          "name": "Aliance pro budoucnost",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 15,
+          "name": "Urza.cz: Nechceme vaše hlasy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 16,
+          "name": "Koruna Česká (monarch.strana)",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 18,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 19,
+          "name": "Moravské zemské hnutí",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 22,
+          "name": "Moravané",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    }
+  },
+  {
+    "municipality": "Minice",
+    "region": "Jihočeský",
+    "code": 562149,
+    "admin_center": "Písek",
+    "voters_2021": 27,
+    "results_2017": {
+      "municipality": "Minice",
+      "year": "2017",
+      "url": "https://www.volby.cz/pls/ps2017/ps311?xjazyk=CZ&xkraj=3&xobec=562149&xvyber=3104",
+      "total_valid_votes": 27,
+      "parties": [
+        {
+          "number": 29,
+          "name": "Svob.a př.dem.-T.Okamura (SPD)",
+          "votes": 5,
+          "percentage": 18.51
+        },
+        {
+          "number": 1,
+          "name": "Občanská demokratická strana",
+          "votes": 4,
+          "percentage": 14.81
+        },
+        {
+          "number": 8,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 4,
+          "percentage": 14.81
+        },
+        {
+          "number": 21,
+          "name": "ANO 2011",
+          "votes": 4,
+          "percentage": 14.81
+        },
+        {
+          "number": 7,
+          "name": "STAROSTOVÉ A NEZÁVISLÍ",
+          "votes": 3,
+          "percentage": 11.11
+        },
+        {
+          "number": 15,
+          "name": "Česká pirátská strana",
+          "votes": 2,
+          "percentage": 7.4
+        },
+        {
+          "number": 24,
+          "name": "Křesť.demokr.unie-Čs.str.lid.",
+          "votes": 2,
+          "percentage": 7.4
+        },
+        {
+          "number": 2,
+          "name": "Řád národa - Vlastenecká unie",
+          "votes": 1,
+          "percentage": 3.7
+        },
+        {
+          "number": 9,
+          "name": "Strana zelených",
+          "votes": 1,
+          "percentage": 3.7
+        },
+        {
+          "number": 20,
+          "name": "TOP 09",
+          "votes": 1,
+          "percentage": 3.7
+        },
+        {
+          "number": 3,
+          "name": "CESTA ODPOVĚDNÉ SPOLEČNOSTI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 4,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 6,
+          "name": "Radostné Česko",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "ROZUMNÍ-stop migraci,diktát.EU",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 12,
+          "name": "Strana svobodných občanů",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 13,
+          "name": "Blok proti islam.-Obran.domova",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 14,
+          "name": "Občanská demokratická aliance",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 19,
+          "name": "Referendum o Evropské unii",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 22,
+          "name": "Dobrá volba 2016",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 23,
+          "name": "SPR-Republ.str.Čsl. M.Sládka",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 25,
+          "name": "Česká strana národně sociální",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 26,
+          "name": "REALISTÉ",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 27,
+          "name": "SPORTOVCI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 28,
+          "name": "Dělnic.str.sociální spravedl.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 30,
+          "name": "Strana Práv Občanů",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    },
+    "results_2021": {
+      "municipality": "Minice",
+      "year": "2021",
+      "url": "https://www.volby.cz/pls/ps2021/ps311?xjazyk=CZ&xkraj=3&xobec=562149&xvyber=3104",
+      "total_valid_votes": 27,
+      "parties": [
+        {
+          "number": 13,
+          "name": "SPOLU – ODS, KDU-ČSL, TOP 09",
+          "votes": 12,
+          "percentage": 44.44
+        },
+        {
+          "number": 20,
+          "name": "ANO 2011",
+          "votes": 4,
+          "percentage": 14.81
+        },
+        {
+          "number": 4,
+          "name": "Svoboda a př. demokracie (SPD)",
+          "votes": 3,
+          "percentage": 11.11
+        },
+        {
+          "number": 8,
+          "name": "Trikolora Svobodní Soukromníci",
+          "votes": 3,
+          "percentage": 11.11
+        },
+        {
+          "number": 5,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 2,
+          "percentage": 7.4
+        },
+        {
+          "number": 18,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 2,
+          "percentage": 7.4
+        },
+        {
+          "number": 17,
+          "name": "PIRÁTI a STAROSTOVÉ",
+          "votes": 1,
+          "percentage": 3.7
+        },
+        {
+          "number": 1,
+          "name": "Strana zelených",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 2,
+          "name": "Švýcarská demokracie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "VOLNÝ blok",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 7,
+          "name": "ALIANCE NÁRODNÍCH SIL",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 9,
+          "name": "Aliance pro budoucnost",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "Hnutí Prameny",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 12,
+          "name": "PŘÍSAHA Roberta Šlachty",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 15,
+          "name": "Urza.cz: Nechceme vaše hlasy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 16,
+          "name": "Koruna Česká (monarch.strana)",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 21,
+          "name": "Otevřeme ČR normálnímu životu",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 22,
+          "name": "Moravané",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    }
+  },
+  {
+    "municipality": "Čejkovice",
+    "region": "Středočeský",
+    "code": 529524,
+    "admin_center": "Čáslav",
+    "voters_2021": 27,
+    "results_2017": {
+      "municipality": "Čejkovice",
+      "year": "2017",
+      "url": "https://www.volby.cz/pls/ps2017/ps311?xjazyk=CZ&xkraj=2&xobec=529524&xvyber=2104",
+      "total_valid_votes": 0,
+      "parties": [],
+      "error": null
+    },
+    "results_2021": {
+      "municipality": "Čejkovice",
+      "year": "2021",
+      "url": "https://www.volby.cz/pls/ps2021/ps311?xjazyk=CZ&xkraj=2&xobec=529524&xvyber=2104",
+      "total_valid_votes": 0,
+      "parties": [],
+      "error": null
+    }
+  },
+  {
+    "municipality": "Vápovice",
+    "region": "Kraj Vysočina",
+    "code": 588105,
+    "admin_center": "Telč",
+    "voters_2021": 28,
+    "results_2017": {
+      "municipality": "Vápovice",
+      "year": "2017",
+      "url": "https://www.volby.cz/pls/ps2017/ps311?xjazyk=CZ&xkraj=10&xobec=588105&xvyber=6102",
+      "total_valid_votes": 22,
+      "parties": [
+        {
+          "number": 24,
+          "name": "Křesť.demokr.unie-Čs.str.lid.",
+          "votes": 9,
+          "percentage": 40.9
+        },
+        {
+          "number": 4,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 4,
+          "percentage": 18.18
+        },
+        {
+          "number": 1,
+          "name": "Občanská demokratická strana",
+          "votes": 2,
+          "percentage": 9.09
+        },
+        {
+          "number": 8,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 2,
+          "percentage": 9.09
+        },
+        {
+          "number": 21,
+          "name": "ANO 2011",
+          "votes": 2,
+          "percentage": 9.09
+        },
+        {
+          "number": 29,
+          "name": "Svob.a př.dem.-T.Okamura (SPD)",
+          "votes": 2,
+          "percentage": 9.09
+        },
+        {
+          "number": 7,
+          "name": "STAROSTOVÉ A NEZÁVISLÍ",
+          "votes": 1,
+          "percentage": 4.54
+        },
+        {
+          "number": 2,
+          "name": "Řád národa - Vlastenecká unie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "CESTA ODPOVĚDNÉ SPOLEČNOSTI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 6,
+          "name": "Radostné Česko",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 9,
+          "name": "Strana zelených",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "ROZUMNÍ-stop migraci,diktát.EU",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 12,
+          "name": "Strana svobodných občanů",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 13,
+          "name": "Blok proti islam.-Obran.domova",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 14,
+          "name": "Občanská demokratická aliance",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 15,
+          "name": "Česká pirátská strana",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 19,
+          "name": "Referendum o Evropské unii",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 20,
+          "name": "TOP 09",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 23,
+          "name": "SPR-Republ.str.Čsl. M.Sládka",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 25,
+          "name": "Česká strana národně sociální",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 26,
+          "name": "REALISTÉ",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 27,
+          "name": "SPORTOVCI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 28,
+          "name": "Dělnic.str.sociální spravedl.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 30,
+          "name": "Strana Práv Občanů",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    },
+    "results_2021": {
+      "municipality": "Vápovice",
+      "year": "2021",
+      "url": "https://www.volby.cz/pls/ps2021/ps311?xjazyk=CZ&xkraj=10&xobec=588105&xvyber=6102",
+      "total_valid_votes": 28,
+      "parties": [
+        {
+          "number": 13,
+          "name": "SPOLU – ODS, KDU-ČSL, TOP 09",
+          "votes": 10,
+          "percentage": 35.71
+        },
+        {
+          "number": 20,
+          "name": "ANO 2011",
+          "votes": 9,
+          "percentage": 32.14
+        },
+        {
+          "number": 8,
+          "name": "Trikolora Svobodní Soukromníci",
+          "votes": 3,
+          "percentage": 10.71
+        },
+        {
+          "number": 4,
+          "name": "Svoboda a př. demokracie (SPD)",
+          "votes": 2,
+          "percentage": 7.14
+        },
+        {
+          "number": 5,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 2,
+          "percentage": 7.14
+        },
+        {
+          "number": 1,
+          "name": "Strana zelených",
+          "votes": 1,
+          "percentage": 3.57
+        },
+        {
+          "number": 17,
+          "name": "PIRÁTI a STAROSTOVÉ",
+          "votes": 1,
+          "percentage": 3.57
+        },
+        {
+          "number": 2,
+          "name": "Švýcarská demokracie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "VOLNÝ blok",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 7,
+          "name": "ALIANCE NÁRODNÍCH SIL",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 9,
+          "name": "Aliance pro budoucnost",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "Hnutí Prameny",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 12,
+          "name": "PŘÍSAHA Roberta Šlachty",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 15,
+          "name": "Urza.cz: Nechceme vaše hlasy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 16,
+          "name": "Koruna Česká (monarch.strana)",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 18,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 19,
+          "name": "Moravské zemské hnutí",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 21,
+          "name": "Otevřeme ČR normálnímu životu",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 22,
+          "name": "Moravané",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    }
+  },
+  {
+    "municipality": "Čilá",
+    "region": "Plzeňský",
+    "code": 540927,
+    "admin_center": "Rokycany",
+    "voters_2021": 31,
+    "results_2017": {
+      "municipality": "Čilá",
+      "year": "2017",
+      "url": "https://www.volby.cz/pls/ps2017/ps311?xjazyk=CZ&xkraj=4&xobec=540927&xvyber=3206",
+      "total_valid_votes": 17,
+      "parties": [
+        {
+          "number": 1,
+          "name": "Občanská demokratická strana",
+          "votes": 7,
+          "percentage": 41.17
+        },
+        {
+          "number": 15,
+          "name": "Česká pirátská strana",
+          "votes": 5,
+          "percentage": 29.41
+        },
+        {
+          "number": 21,
+          "name": "ANO 2011",
+          "votes": 4,
+          "percentage": 23.52
+        },
+        {
+          "number": 9,
+          "name": "Strana zelených",
+          "votes": 1,
+          "percentage": 5.88
+        },
+        {
+          "number": 2,
+          "name": "Řád národa - Vlastenecká unie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "CESTA ODPOVĚDNÉ SPOLEČNOSTI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 4,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 6,
+          "name": "Radostné Česko",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 7,
+          "name": "STAROSTOVÉ A NEZÁVISLÍ",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 8,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "ROZUMNÍ-stop migraci,diktát.EU",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 12,
+          "name": "Strana svobodných občanů",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 13,
+          "name": "Blok proti islam.-Obran.domova",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 14,
+          "name": "Občanská demokratická aliance",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 16,
+          "name": "OBČANÉ 2011-SPRAVEDL. PRO LIDI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 19,
+          "name": "Referendum o Evropské unii",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 20,
+          "name": "TOP 09",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 23,
+          "name": "SPR-Republ.str.Čsl. M.Sládka",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 24,
+          "name": "Křesť.demokr.unie-Čs.str.lid.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 25,
+          "name": "Česká strana národně sociální",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 26,
+          "name": "REALISTÉ",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 27,
+          "name": "SPORTOVCI",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 28,
+          "name": "Dělnic.str.sociální spravedl.",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 29,
+          "name": "Svob.a př.dem.-T.Okamura (SPD)",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 30,
+          "name": "Strana Práv Občanů",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    },
+    "results_2021": {
+      "municipality": "Čilá",
+      "year": "2021",
+      "url": "https://www.volby.cz/pls/ps2021/ps311?xjazyk=CZ&xkraj=4&xobec=540927&xvyber=3206",
+      "total_valid_votes": 31,
+      "parties": [
+        {
+          "number": 13,
+          "name": "SPOLU – ODS, KDU-ČSL, TOP 09",
+          "votes": 14,
+          "percentage": 45.16
+        },
+        {
+          "number": 17,
+          "name": "PIRÁTI a STAROSTOVÉ",
+          "votes": 12,
+          "percentage": 38.7
+        },
+        {
+          "number": 20,
+          "name": "ANO 2011",
+          "votes": 3,
+          "percentage": 9.67
+        },
+        {
+          "number": 5,
+          "name": "Česká str.sociálně demokrat.",
+          "votes": 1,
+          "percentage": 3.22
+        },
+        {
+          "number": 16,
+          "name": "Koruna Česká (monarch.strana)",
+          "votes": 1,
+          "percentage": 3.22
+        },
+        {
+          "number": 1,
+          "name": "Strana zelených",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 2,
+          "name": "Švýcarská demokracie",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 3,
+          "name": "VOLNÝ blok",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 4,
+          "name": "Svoboda a př. demokracie (SPD)",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 7,
+          "name": "ALIANCE NÁRODNÍCH SIL",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 8,
+          "name": "Trikolora Svobodní Soukromníci",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 9,
+          "name": "Aliance pro budoucnost",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 10,
+          "name": "Hnutí Prameny",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 12,
+          "name": "PŘÍSAHA Roberta Šlachty",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 14,
+          "name": "SENIOŘI 21",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 15,
+          "name": "Urza.cz: Nechceme vaše hlasy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 18,
+          "name": "Komunistická str.Čech a Moravy",
+          "votes": 0,
+          "percentage": 0.0
+        },
+        {
+          "number": 21,
+          "name": "Otevřeme ČR normálnímu životu",
+          "votes": 0,
+          "percentage": 0.0
+        }
+      ],
+      "error": null
+    }
+  }
+]
