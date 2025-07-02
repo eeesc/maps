@@ -265,7 +265,7 @@
             <label for="colorBy">Zbarvit podle:</label>
             <select id="colorBy">
                 <option value="voters2021">Počet voličů (2021)</option>
-                <option value="men">Počet mužů</option>
+                <option value="men">Počet mužů 15+</option>
                 <option value="women15plus">Ženy 15+</option>
                 <option value="total15plus">Celkem 15+</option>
             </select>
@@ -275,7 +275,7 @@
             <label for="sizeBy">Velikost podle:</label>
             <select id="sizeBy">
                 <option value="voters2021">Počet voličů (2021)</option>
-                <option value="men">Počet mužů</option>
+                <option value="men">Počet mužů 15+</option>
                 <option value="women15plus">Ženy 15+</option>
                 <option value="total15plus">Celkem 15+</option>
             </select>
@@ -302,7 +302,7 @@
                         <th data-sort="region">Kraj</th>
                         <th data-sort="voters2021">Voliči 2021</th>
                         <th data-sort="voterImpact">Podíl voliče (%)</th>
-                        <th data-sort="men">Muži</th>
+                        <th data-sort="men">Muži 15+</th>
                         <th data-sort="women15plus">Ženy 15+</th>
                         <th data-sort="total15plus">Celkem 15+</th>
                         <th>Mapa</th>
@@ -386,7 +386,7 @@
                         <span class="data-value">${municipality.voterImpact}</span>
                     </div>
                     <div class="data-row">
-                        <span class="data-label">Mužů:</span>
+                        <span class="data-label">Mužů 15+:</span>
                         <span class="data-value">${municipality.men}</span>
                     </div>
                     <div class="data-row">
@@ -414,7 +414,7 @@
             const legendContent = document.getElementById('legendContent');
             const propertyNames = {
                 voters2021: 'Počet voličů (2021)',
-                men: 'Počet mužů',
+                men: 'Počet mužů 15+',
                 women15plus: 'Ženy 15+',
                 total15plus: 'Celkem 15+'
             };

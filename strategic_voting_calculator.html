@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Voting Calculator - Czech Elections</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .party-selector {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .party-selector h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .party-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .party-option {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .party-option:hover {
+            border-color: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .party-option.selected {
+            border-color: #3498db;
+            background: #e3f2fd;
+        }
+
+        .party-option .party-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .party-option .party-stats {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .results-section {
+            display: none;
+        }
+
+        .results-section.active {
+            display: block;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .municipality-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .municipality-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .municipality-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .municipality-name {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .impact-score {
+            background: #e74c3c;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .impact-score.high {
+            background: #e74c3c;
+        }
+
+        .impact-score.medium {
+            background: #f39c12;
+        }
+
+        .impact-score.low {
+            background: #27ae60;
+        }
+
+        .election-year {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .year-header {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .party-results {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .party-result {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+        }
+
+        .party-result.winner {
+            background: #d4edda;
+            padding: 8px 12px;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+        }
+
+        .party-result.selected-party {
+            background: #e3f2fd;
+            padding: 8px 12px;
+            border-radius: 5px;
+            border-left: 4px solid #2196f3;
+        }
+
+        .party-result.competitive {
+            background: #fff3cd;
+            padding: 8px 12px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .strategic-analysis {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .strategic-analysis h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .strategic-point {
+            color: #666;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .summary-stats {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .summary-stats.active {
+            display: block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: 600;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .party-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗳️ Strategic Voting Calculator</h1>
+            <p>Analyze where your vote would have maximum impact in Czech elections</p>
+        </div>
+
+        <div class="main-content">
+            <div class="party-selector">
+                <h2>Choose Your Preferred Party</h2>
+                <div class="party-grid" id="party-grid">
+                    <div class="loading">Loading party data...</div>
+                </div>
+            </div>
+
+            <div class="summary-stats" id="summary-stats">
+                <h2>Strategic Impact Analysis</h2>
+                <div class="stats-grid" id="stats-grid">
+                    <!-- Stats will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="results-section" id="results-section">
+                <h2>Strategic Voting Opportunities</h2>
+                <p>Municipalities ranked by strategic impact potential for your selected party:</p>
+                <div class="results-grid" id="results-grid">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="no-results" id="no-results">
+                <h3>Select a party above to see strategic voting analysis</h3>
+                <p>The calculator will show you where your vote would have the most impact based on historical competitiveness and voter demographics.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let electionData = [];
+        let selectedParty = null;
+
+        // Load election data
+        async function loadElectionData() {
+            try {
+                const response = await fetch('party_results_detailed.json');
+                electionData = await response.json();
+                populatePartySelector();
+            } catch (error) {
+                console.error('Error loading election data:', error);
+                document.getElementById('party-grid').innerHTML = '<div class="loading">Error loading data. Please ensure party_results_detailed.json is available.</div>';
+            }
+        }
+
+        // Get all unique parties across all municipalities and years
+        function getAllParties() {
+            const parties = new Map();
+            
+            electionData.forEach(municipality => {
+                ['results_2017', 'results_2021'].forEach(yearKey => {
+                    const yearData = municipality[yearKey];
+                    if (yearData && !yearData.error && yearData.parties) {
+                        yearData.parties.forEach(party => {
+                            if (party.votes > 0) {
+                                const key = party.name;
+                                if (!parties.has(key)) {
+                                    parties.set(key, {
+                                        name: party.name,
+                                        totalVotes: 0,
+                                        municipalities: new Set(),
+                                        competitiveRaces: 0
+                                    });
+                                }
+                                const partyData = parties.get(key);
+                                partyData.totalVotes += party.votes;
+                                partyData.municipalities.add(municipality.municipality);
+                            }
+                        });
+                    }
+                });
+            });
+
+            return Array.from(parties.values()).sort((a, b) => b.totalVotes - a.totalVotes);
+        }
+
+        // Populate party selector
+        function populatePartySelector() {
+            const parties = getAllParties();
+            const partyGrid = document.getElementById('party-grid');
+            
+            partyGrid.innerHTML = parties.map(party => `
+                <div class="party-option" data-party="${party.name}">
+                    <div class="party-name">${party.name}</div>
+                    <div class="party-stats">
+                        ${party.totalVotes} votes across ${party.municipalities.size} municipalities
+                    </div>
+                </div>
+            `).join('');
+
+            // Add click handlers
+            document.querySelectorAll('.party-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    document.querySelectorAll('.party-option').forEach(opt => opt.classList.remove('selected'));
+                    option.classList.add('selected');
+                    selectedParty = option.dataset.party;
+                    analyzeStrategicVoting();
+                });
+            });
+        }
+
+        // Calculate strategic impact for a municipality
+        function calculateStrategicImpact(municipality, partyName) {
+            const analysis = {
+                municipality: municipality.municipality,
+                region: municipality.region,
+                voters2021: municipality.voters_2021,
+                impactScore: 0,
+                scenarios: [],
+                competitiveness: 0,
+                historicalTrend: 'stable'
+            };
+
+            // Analyze both election years
+            ['results_2017', 'results_2021'].forEach(yearKey => {
+                const year = yearKey.split('_')[1];
+                const yearData = municipality[yearKey];
+                
+                if (!yearData || yearData.error || !yearData.parties) return;
+
+                const sortedParties = [...yearData.parties].sort((a, b) => b.votes - a.votes);
+                const winner = sortedParties[0];
+                const runnerUp = sortedParties[1];
+                const selectedPartyData = yearData.parties.find(p => p.name === partyName);
+
+                if (selectedPartyData) {
+                    const scenario = {
+                        year: year,
+                        totalVotes: yearData.total_valid_votes,
+                        selectedPartyVotes: selectedPartyData.votes,
+                        selectedPartyRank: sortedParties.findIndex(p => p.name === partyName) + 1,
+                        winner: winner.name,
+                        winnerVotes: winner.votes,
+                        margin: winner.votes - (runnerUp ? runnerUp.votes : 0),
+                        couldWin: false,
+                        votesNeeded: 0
+                    };
+
+                    // Calculate if additional votes could change outcome
+                    if (selectedPartyData.name !== winner.name) {
+                        scenario.votesNeeded = winner.votes - selectedPartyData.votes + 1;
+                        scenario.couldWin = scenario.votesNeeded <= 5; // Realistic threshold
+                    }
+
+                    analysis.scenarios.push(scenario);
+                }
+            });
+
+            // Calculate overall impact score
+            if (analysis.scenarios.length > 0) {
+                const latestScenario = analysis.scenarios.find(s => s.year === '2021') || analysis.scenarios[0];
+                
+                // Factors: small electorate (higher impact), competitive race, winnable
+                const electorateImpact = 100 / (municipality.voters_2021 || 50); // Higher for smaller electorates
+                const competitivenessImpact = latestScenario.margin <= 5 ? 20 : (latestScenario.margin <= 10 ? 10 : 0);
+                const winnabilityImpact = latestScenario.couldWin ? 30 : 0;
+                
+                analysis.impactScore = Math.min(100, electorateImpact + competitivenessImpact + winnabilityImpact);
+                analysis.competitiveness = latestScenario.margin;
+            }
+
+            return analysis;
+        }
+
+        // Analyze strategic voting opportunities
+        function analyzeStrategicVoting() {
+            if (!selectedParty) return;
+
+            const analyses = electionData.map(municipality => 
+                calculateStrategicImpact(municipality, selectedParty)
+            ).filter(analysis => analysis.scenarios.length > 0);
+
+            // Sort by strategic impact score
+            analyses.sort((a, b) => b.impactScore - a.impactScore);
+
+            displayResults(analyses);
+            displaySummaryStats(analyses);
+        }
+
+        // Display summary statistics
+        function displaySummaryStats(analyses) {
+            const summaryStats = document.getElementById('summary-stats');
+            const statsGrid = document.getElementById('stats-grid');
+            
+            const winnableRaces = analyses.filter(a => a.scenarios.some(s => s.couldWin)).length;
+            const competitiveRaces = analyses.filter(a => a.competitiveness <= 5).length;
+            const totalMunicipalities = analyses.length;
+            const avgImpactScore = analyses.reduce((sum, a) => sum + a.impactScore, 0) / analyses.length;
+
+            statsGrid.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-value">${winnableRaces}</div>
+                    <div class="stat-label">Winnable Races</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${competitiveRaces}</div>
+                    <div class="stat-label">Competitive Races (≤5 votes)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${totalMunicipalities}</div>
+                    <div class="stat-label">Total Opportunities</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">${avgImpactScore.toFixed(0)}</div>
+                    <div class="stat-label">Avg Impact Score</div>
+                </div>
+            `;
+            
+            summaryStats.classList.add('active');
+        }
+
+        // Display results
+        function displayResults(analyses) {
+            const resultsSection = document.getElementById('results-section');
+            const resultsGrid = document.getElementById('results-grid');
+            const noResults = document.getElementById('no-results');
+
+            if (analyses.length === 0) {
+                resultsSection.classList.remove('active');
+                noResults.style.display = 'block';
+                return;
+            }
+
+            noResults.style.display = 'none';
+            resultsSection.classList.add('active');
+
+            resultsGrid.innerHTML = analyses.map(analysis => {
+                const impactClass = analysis.impactScore >= 70 ? 'high' : 
+                                  analysis.impactScore >= 40 ? 'medium' : 'low';
+                
+                return `
+                    <div class="municipality-card">
+                        <div class="municipality-header">
+                            <div class="municipality-name">${analysis.municipality}</div>
+                            <div class="impact-score ${impactClass}">
+                                Impact: ${analysis.impactScore.toFixed(0)}
+                            </div>
+                        </div>
+                        
+                        <div class="strategic-analysis">
+                            <h4>Strategic Analysis</h4>
+                            <div class="strategic-point">
+                                <strong>Electorate:</strong> ${analysis.voters2021} voters (${(100/analysis.voters2021).toFixed(1)}% per vote)
+                            </div>
+                            <div class="strategic-point">
+                                <strong>Region:</strong> ${analysis.region}
+                            </div>
+                            ${analysis.competitiveness <= 5 ? 
+                                `<div class="strategic-point" style="color: #e74c3c;">
+                                    <strong>🔥 Highly Competitive:</strong> Last margin was only ${analysis.competitiveness} votes
+                                </div>` : ''
+                            }
+                        </div>
+
+                        ${analysis.scenarios.map(scenario => `
+                            <div class="election-year">
+                                <div class="year-header">${scenario.year} Election Results</div>
+                                <div class="party-results">
+                                    <div class="party-result ${scenario.winner === selectedParty ? 'winner selected-party' : 'winner'}">
+                                        <span>🏆 ${scenario.winner}</span>
+                                        <span>${scenario.winnerVotes} votes</span>
+                                    </div>
+                                    ${scenario.selectedPartyVotes > 0 && scenario.winner !== selectedParty ? `
+                                        <div class="party-result selected-party">
+                                            <span>👤 ${selectedParty}</span>
+                                            <span>${scenario.selectedPartyVotes} votes (#${scenario.selectedPartyRank})</span>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                                ${scenario.couldWin ? `
+                                    <div style="background: #d4edda; padding: 10px; border-radius: 5px; margin-top: 10px; color: #155724;">
+                                        <strong>🎯 Winnable!</strong> Only ${scenario.votesNeeded} more votes needed to win
+                                    </div>
+                                ` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Initialize the application
+        loadElectionData();
+    </script>
+</body>
+</html> 

@@ -8,7 +8,7 @@ const municipalities = [
       voterImpact: "5.88%",
       coordinates: [49.416802, 15.042292],
       // From Wikidata: Q1387896 (±0.00138085185018m)
-      men: 8,
+      men: 8, // men 15+ (voting age)
       women15plus: 8,
       total15plus: 16,
       mapyUrl: "https://mapy.com/s/lolefalene"
@@ -22,7 +22,7 @@ const municipalities = [
       voterImpact: "5.56%",
       coordinates: [49.222543, 15.422647],
       // From Wikidata: Q248061 (±0.0013754157687027m)
-      men: 19,
+      men: 12,
       women15plus: 15,
       total15plus: 27,
       mapyUrl: "https://mapy.com/s/jacujovazo"
@@ -36,7 +36,7 @@ const municipalities = [
       voterImpact: "4.76%",
       coordinates: [49.807222, 15.254444],
       // Corrected coordinates - was wrong Bludov in different region
-      men: 16,
+      men: 15,
       women15plus: 8,
       total15plus: 23,
       mapyUrl: "https://mapy.com/s/nulavejugo"
@@ -50,7 +50,7 @@ const municipalities = [
       voterImpact: "4.55%",
       coordinates: [49.506389, 12.771111],
       // Corrected coordinates from Q2218815 - was wrong Hvožďany in different region
-      men: 20,
+      men: 16,
       women15plus: 15,
       total15plus: 31,
       mapyUrl: "https://mapy.com/s/remuposunu"
@@ -64,7 +64,7 @@ const municipalities = [
       voterImpact: "3.85%",
       coordinates: [49.474650, 13.145547],
       // From Wikidata: Q2189407 (±0.0013824820269404m)
-      men: 17,
+      men: 16,
       women15plus: 13,
       total15plus: 29,
       mapyUrl: "https://mapy.com/s/ralagoduzu"
@@ -78,7 +78,7 @@ const municipalities = [
       voterImpact: "3.85%",
       coordinates: [49.674798, 16.160987],
       // From Wikidata: Q94205 (±0.0013881630785654m)
-      men: 19,
+      men: 16,
       women15plus: 13,
       total15plus: 29,
       mapyUrl: "https://mapy.com/s/duzejukuro"
@@ -92,7 +92,7 @@ const municipalities = [
       voterImpact: "3.70%",
       coordinates: [49.489925, 14.012172],
       // From Wikidata: Q1936898 (±0.0013829133747215m)
-      men: 15,
+      men: 14,
       women15plus: 13,
       total15plus: 27,
       mapyUrl: "https://mapy.com/s/covugoleme"

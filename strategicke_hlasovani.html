@@ -476,7 +476,6 @@
                         <th>Kraj</th>
                         <th>Voličů 2021</th>
                         <th>Strategický dopad</th>
-                        <th>Náskok soupeře</th>
                         <th>Hlasů k postupu</th>
                         <th id="winnableHeader">Vítězné</th>
                         <th>Status</th>
@@ -525,11 +524,11 @@
                 <p style="margin-left: 15px; color: #999;">→ V obci se 17 voliči = 5,9 bodů (každý hlas = 5,9% dopadu)</p>
                 <p style="margin-left: 15px; color: #999;">→ V obci s 31 voliči = 3,2 bodů (každý hlas = 3,2% dopadu)</p>
                 
-                            <p><strong>Náskok soupeře:</strong> Bonus za malý odstup od lepšího umístění</p>
+                            <p><strong>Konkurenční bonus:</strong> Bonus za těsné souboje</p>
             <p style="margin-left: 15px; color: #999;">→ +35 bodů: remíza za 1. místo (+1 hlas = vítězství!)</p>
-            <p style="margin-left: 15px; color: #999;">→ +25 bodů: náskok ≤2 hlasy (velmi těsný souboj)</p>
-            <p style="margin-left: 15px; color: #999;">→ +15 bodů: náskok ≤5 hlasů (těsný souboj)</p>
-            <p style="margin-left: 15px; color: #999;">→ +5 bodů: náskok ≤10 hlasů (středně těsný)</p>
+            <p style="margin-left: 15px; color: #999;">→ +25 bodů: rozdíl ≤2 hlasy (velmi těsný souboj)</p>
+            <p style="margin-left: 15px; color: #999;">→ +15 bodů: rozdíl ≤5 hlasů (těsný souboj)</p>
+            <p style="margin-left: 15px; color: #999;">→ +5 bodů: rozdíl ≤10 hlasů (středně těsný)</p>
                 
                 <p><strong>Reálná vítěznost:</strong> Bonus za dosažitelné cíle</p>
                 <p style="margin-left: 15px; color: #999;">→ +30 bodů: vaše strana by mohla vyhrát s ≤5 hlasy navíc</p>
@@ -542,18 +541,13 @@
             
             <h4>Indikátory v tabulce</h4>
             <div style="margin: 10px 0; font-size: 0.9em; color: #666;">
-                            <p><strong>Náskok soupeře:</strong> O kolik hlasů potřebujete pro strategický pokrok</p>
-            <p style="margin-left: 15px; color: #999;">→ "2 hlasy" = potřebujete +2 hlasy k nejbližší lepší straně</p>
-            <p style="margin-left: 15px; color: #999;">→ "1 hlas" = potřebujete +1 hlas k lepšímu umístění</p>
-            <p style="margin-left: 15px; color: #999;">→ "+1 hlas (vítězství)" = remíza za 1. místo, +1 hlas vyhrává</p>
-            <p style="margin-left: 15px; color: #999;">→ "0 hlasů (remíza)" = remíza, ale ne za 1. místo</p>
-            <p style="margin-left: 15px; color: #999;">→ "Vítěz" = vaše strana jasně vyhrála</p>
+                
             
             <p><strong>Hlasů k postupu:</strong> Kolik hlasů potřebuje vaše strana</p>
             <p style="margin-left: 15px; color: #999;">→ "+3 (postup) / +7 (vítězství)" = 3 hlasy pro lepší umístění, 7 pro vítězství</p>
             <p style="margin-left: 15px; color: #999;">→ "🏆 Vítěz" = vaše strana v těchto volbách vyhrála</p>
                 
-                <p><span class="competitive-indicator">Těsný souboj</span> - Malý náskok soupeře (≤2 hlasy)</p>
+                <p><span class="competitive-indicator">Těsný souboj</span> - Malý rozdíl mezi stranami (≤2 hlasy)</p>
                 <p><span class="winnable-indicator">Vítězné</span> - Vaše strana mohla vyhrát s malým počtem hlasů</p>
                 <p><strong>✅/❌ Sloupec:</strong> Zda byla vaše strana vítězná nebo mohla reálně vyhrát</p>
             </div>
@@ -1115,23 +1109,6 @@
                         <td>${analysis.region}</td>
                         <td>${analysis.voters2021}</td>
                         <td><span class="${impactClass}">${analysis.impactScore.toFixed(0)}</span></td>
-                        <td>${
-                            (() => {
-                                const scenario = analysis.scenarios.find(s => s.year === selectedYear);
-                                if (scenario && scenario.selectedPartyRank === 1) {
-                                    if (scenario.isTiedForFirst) {
-                                        return '+1 hlas (vítězství)';
-                                    } else {
-                                        return 'Vítěz';
-                                    }
-                                } else if (analysis.competitiveness === 0) {
-                                    return '0 hlasů (remíza)';
-                                } else {
-                                    const suffix = analysis.competitiveness === 1 ? 'hlas' : 'hlasů';
-                                    return analysis.competitiveness + ' ' + suffix;
-                                }
-                            })()
-                        }</td>
                         <td>${votesText}</td>
                         <td>${isWinnable ? '✅' : '❌'}</td>
                         <td>${statusIndicators.join(' ')}</td>
